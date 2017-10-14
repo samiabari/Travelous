@@ -1,0 +1,70 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+@{
+    ViewBag.Title = "PlaceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Travel.Models.ViewModel.HostDetailSearchViewModel
+<div class="container-fluid">
+    <div class="overlay">
+        @if ((string)Session["HostList"] != null)
+        {
+            int SearchCountryId = (int)Session["SearchCountryId"];
+            int SearchCityId = (int)Session["SearchCityId"];
+            string Arrival = (string)Session["Arrival"];
+            string Departure = (string)Session["Departure"];
+            Session["HostList"] = null;
+            <div style="Background-color:white;margin-top:100px;">
+                @Html.ActionLink("Go Back???", "SearchHostList", "Offer", new { CountryId = SearchCountryId, CityId = SearchCityId, VendorTypeId = VendorTypeId, Arrival = Arrival, Departure = Departure }, null)
+            </div>
+        }
+        <div style="border-color:blue; border-style: solid; border-bottom-width: 10px; height:500px;margin-top:100px;width:900px;margin-left:300px;">
+            @if (Model.HostPictureData != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.HostPictureData)" class="img-fluid" alt="@Model.HostName" style="margin-top:10px;width:700px;height:450px;margin:10px;">
+            }
+            else
+            {
+                <img src="~/Content/Images/imagesv.jpg" class="img-fluid" alt="@Model.HostName" style="margin-top:10px;width:1400px;height:400px;margin:10px;">
+
+
+            }
+        </div>
+        <div style="margin-left:150px;margin-right:150px;">
+       
+        @{
+            var Con = TempData["CountryId"];
+            int CountryId = Convert.ToInt32(Con);
+            var Cit = TempData["CityId"];
+            int CityId = Convert.ToInt32(Cit);
+
+        }
+        <div style="height:40px;margin-top:10px;background-color:#ccffff;">
+            <h3>@Model.HostTypeName type offer by @Model.HostName</h3>
+        </div>
+        <div style="margin:10px;height:60px;background-color:#e1eaea;">
+            <table class="table table-responsive table-hover table-bordered">
+                <tbody>
+                    <tr>
+                        <td>
+                            Country: @Model.CountryName
+                            <br />City:@Model.CityName
+                        </td>
+                 
+                     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background-color:#ffffff;margin:10px;" class="panel panel-default">
+            <div class="panel-body">
+                <p style="color:black !important;font-size:15px;">@Html.Raw(Model.HostFullDetail)</p>
+            </div>
+        </div>
+            </div>
+    </div>
+</div>s

@@ -1,0 +1,150 @@
+﻿
+
+
+
+<head>
+
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+
+</head>
+
+
+@model Travel.Models.ViewModel.VendorsVendorShipDetailViewModel
+
+@{
+    ViewBag.Title = "Update vendorship detail";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+
+@{ Html.EnableClientValidation(true); }
+<div class="container-fluid">
+    <div class="overlay">
+
+
+        @using (Html.BeginForm("VendorShipDetail", "Vendor", FormMethod.Post, new { @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:50px; width:1100px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+            @Html.TextBoxFor(m => m.VendorId, new { @type = "hidden" })
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorOfficeName, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VendorOfficeName, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorOfficeName, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorOfficePhnNo, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VendorOfficePhnNo, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorOfficePhnNo, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorTypeId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.VendorTypeId, Model.VendorTypeList, "--Select--", new { @id = "ddlVendorType", @name = "VendorTypeId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorTypeId, "", new { @class = "text-danger " })
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CityId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group" id="City">
+                        @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorOfficeWebsite, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VendorOfficeWebsite, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorOfficeWebsite, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorOfficeAddress, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VendorOfficeAddress, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorOfficeAddress, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorOfficeMail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.VendorOfficeMail, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.VendorOfficeMail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.VendorsVendorShipDetail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.VendorsVendorShipDetail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.VendorsVendorShipDetail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="btnCreate" onclick="Validate(this, event);" class="btn btn-default border-radius" value="Update" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        <p style="text-align:center;color:Black;">@ViewData["message"]</p>
+
+
+    </div>
+</div>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/Own/Alert.js"></script>
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/Own/Editor.js"></script>

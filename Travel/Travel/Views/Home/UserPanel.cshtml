@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "UserPanel";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+
+<div class="container-fluid">
+    @if ((string)Session["userCode"] == "admin")
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Admin<small> Home</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Activities
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+      
+    }
+    else if ((string)Session["userCode"] == "tourist")
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                   Tourist<small> Home</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Activities
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">My Host List!</div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Host/MyHostList">
+                        <div class="panel-footer">
+                            <span class="pull-left">View List</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                            @if (TempData["not"] != null)
+                            { <p class="alert alert-success" id="successMessage" style="height:40px;margin-bottom:40px;margin-top:10px;">@TempData["Place"] </p>
+                            }
+                        </div>
+                    </a>
+                </div>
+            </div>
+           
+         
+            
+        </div>
+    <!-- /.row -->
+        <div class="row">
+            
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                   Vendor<small> Home</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Activities
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">My Offer List!</div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Offer/MyOfferList">
+                        <div class="panel-footer">
+                            <span class="pull-left">View List</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                            @if (TempData["not"] != null)
+                            { <p class="alert alert-success" id="successMessage" style="height:40px;margin-bottom:40px;margin-top:10px;">@TempData["Place"] </p>
+                            }
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+            }
+
+        </div>

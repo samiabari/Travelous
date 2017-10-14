@@ -1,0 +1,132 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+@{
+    ViewBag.Title = "PlaceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Travel.Models.ViewModel.PlaceDetailViewModel
+<div class="container-fluid">
+    <div class="overlay">
+        @if (((string)Session["SearchPlaceList"] != null)&&((string)Session["SearchPlaceListType"]==null))
+        {
+            Session["SearchPlaceList"] = null;
+            int SearchCountryId = (int)Session["SearchCountryId"];
+            int SearchCityId = (int)Session["SearchCityId"];
+            string Arrival = (string)Session["Arrival"];
+            string Departure = (string)Session["Departure"];
+        
+            <div style="Background-color:white;margin-top:100px;">
+                @Html.ActionLink("Go Back???", "SearchPlaceList", "Place", new { CountryId = SearchCountryId, CityId = SearchCityId,}, null)
+            </div>
+        }
+        else if ((string)Session["SearchPlaceListType"] != null)
+        {
+            Session["SearchPlaceList"] = null;
+            int SearchCountryId = (int)Session["SearchCountryId"];
+            int SearchCityId = (int)Session["SearchCityId"];
+            int SearchPlaceTypeId = (int)Session["SearchPlaceTypeId"];
+            <div style="Background-color:white;margin-top:100px;">
+                @Html.ActionLink("Go Back???", "SearchPlaceListWithType", "Place", new { CountryId = SearchCountryId, CityId = SearchCityId, PlaceTypeId = SearchPlaceTypeId }, null)
+            </div>
+            Session["SearchPlaceListType"] = null;
+        }
+        else
+        {
+            int SearchCountryId = (int)Session["SearchCountryId"];
+            int SearchCityId = (int)Session["SearchCityId"];
+            string Arrival = (string)Session["Arrival"];
+            string Departure = (string)Session["Departure"];
+                <div style="Background-color:white;margin-top:100px;">
+                    @Html.ActionLink("Go Back???", "Search", "Home", new { CountryId = SearchCountryId, CityId = SearchCityId, Arrival = Arrival, Departure = Departure }, null)
+                </div>
+                }
+
+
+                <div style="border-color:blue; border-style: solid; border-bottom-width: 10px; height:500px;margin-top:100px;;width:900px;;margin-left:300px;">
+                    @if (Model.PlacePictureData != null)
+                    {
+                        <img src="data:image;base64,@System.Convert.ToBase64String(Model.PlacePictureData)" class="img-fluid" alt="@Model.PlaceName" style="margin-top:10px;width:700px;height:450px;margin:10px;">
+                    }
+                    else
+                    {
+                        <img src="~/Content/Images/imagesv.jpg" class="img-fluid" alt="@Model.PlaceName" style="margin-top:10px;width:1400px;height:400px;margin:10px;">
+
+
+                    }
+                </div>
+                <div style="margin-left:150px;margin-right:150px;">
+                    @if(TempData["PlaceBlock"]!=null)
+                    {
+                        <p>@TempData["PlaceBlock"]</p>
+                    }
+                    @if ((string)Session["userCode"] == "admin")
+                    {
+                        if (TempData["PlaceProPic"]!=null)
+                        { <p>@TempData["PlaceProPic"]</p>}
+                        if (TempData["EditPlace"] != null)
+                        { <p>@TempData["EditPlace"]</p>}
+                        using (Html.BeginForm("AddProfilePic", "Place", new { PlaceId = Model.PlaceId, albumTypeId = 1 }, FormMethod.Post, new { @enctype = "multipart/form-data", @style = "width:300px;height:100px !important;margin-bottom:2px !important;background-color:black !important;margin-top:10px;border-radius:0px;" }))
+                        {
+
+                                <input name="AddPicture" id="AddPicture" type="file" accept="image/*" style="background-color:black;color:white;width: 225px !important;" />
+                                <button name="submitPicture" id="submitPicture" type="submit" style="background-color:black;color:white;width: 225px;height:20px !important;margin-bottom:2px !important;">save</button>
+                            }
+                            <div style="background-color:white;height:100px;">
+                                @Html.ActionLink("Edit the place", "EditPlace", "Place", new { PlaceId = Model.PlaceId}, null)<br/>
+                                @if (Model.PlaceAdminPermit == false)
+                                {
+                                    @Html.ActionLink("Unblock place", "UnBlockPlace", "Place", new { PlaceId = Model.PlaceId }, null);
+                            }
+                            else
+                            {
+                                    @Html.ActionLink("Block place", "BlockPlace", "Place", new { PlaceId = Model.PlaceId }, null);
+                            }
+
+                            </div>
+                        }
+
+                
+                    @if ((String)Session["userCode"] == "tourist")
+                    {if(TempData["CheckInPlaceSearch"]!=null)
+                    {
+<p>@TempData["CheckInPlaceSearch"]</p>
+                        }
+                        if (TempData["AddToWishPlaceSearch"] != null)
+                        {
+                            <p>@TempData["AddToWishPlaceSearch"]</p>
+                        }
+                        @Html.ActionLink("Check In", "searchCheckIn", "Place", new { PlaceId = Model.PlaceId }, null);<br />
+                        @Html.ActionLink("Add to Wishlist", "searchAddToWishPlace", "Place", new { PlaceId = Model.PlaceId }, null);
+                    }
+                    <div style="height:40px;margin-top:10px;background-color:#ccffff;">
+                        <h3>@Model.PlaceName</h3>  
+                        
+                    </div>
+                    <div style="margin:10px;height:60px;background-color:#e1eaea;">
+                        <table class="table table-responsive table-hover table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Country: @Model.CountryName
+                                        <br />City:@Model.CityName
+                                    </td>
+                                    <td>Type of place: @Model.PlaceTypeName</td>
+                                    <td>Popularity: @Model.PlaceLike
+                                        </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="background-color:#ffffff;margin:10px;" class="panel panel-default">
+                        <div class="panel-body">
+                            <p style="color:black !important;font-size:15px;">@Html.Raw(Model.PlaceFullDetail)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>

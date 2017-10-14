@@ -1,0 +1,114 @@
+﻿
+<head>
+
+
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+
+</head>
+
+
+@model Travel.Models.ViewModel.EditPlaceViewModel
+
+    @{
+        ViewBag.Title = "Add a new Place";
+        Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+        var pl = ViewData["pl"] as Travel.Models.ViewModel.PlaceDetailViewModel;
+    }
+    @{ Html.EnableClientValidation(true); }
+    <div class="container-fluid">
+        <div class="overlay">
+
+            <h2>
+
+                EDIT Place
+            </h2>
+            @if (TempData["Success"] != null)
+            {
+                <p class="alert alert-success" id="successMessage" style="height:40px;margin:20px;">@TempData["Success"]</p>
+            }
+
+
+            @using (Html.BeginForm("EditPlace", "Place", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:30px; width:1100px;" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+                <hr />
+                @Html.TextBoxFor(m => m.PlaceId, new { @value = pl.PlaceId, @class = "form-control", @type = "hidden" })
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PlaceName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PlaceName, new { @value = pl.PlaceName, @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PlaceName, "", new { @class = "text-danger " })
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+
+                        <div>Country: <h3>@pl.CountryName</h3></div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10" id="City">
+
+                        <div>City: <h3>@pl.CityName</h3></div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PlaceTypeId, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.PlaceTypeId, Model.PlaceTypeList, "--Select--", new { @id = "PlaceTypeId", @name = "PlaceTypeId", @class = "form-control" })
+                        <div> <h3>@pl.PlaceTypeName</h3></div>
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PlaceAddress, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+
+                        @Html.TextBoxFor(m => m.PlaceAddress, new { @class = "form-control" })
+
+                    </div>
+
+                </div>
+                <div id="editor" class="form-group">
+                    @Html.LabelFor(m => m.PlaceDetail, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(m => m.PlaceDetail, new { @id = "edit", @class = "form-control" })
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" id="EditPlaceButton" class="btn btn-default" value="Done" , onclick="return confirm('Are sure, you want to Edit?');" />
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+<script src="~/Scripts/sweetalert.min.js"></script>
+<script src="~/Scripts/Own/Alert.js"></script>
+<script src="~/scripts/tinymce/tinymce.min.js"></script>
+<script src="~/Scripts/Own/Editor.js"></script>

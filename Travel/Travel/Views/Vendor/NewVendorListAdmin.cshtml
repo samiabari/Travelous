@@ -1,0 +1,64 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+@{
+    ViewBag.Title = "PlaceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Travel.Models.ViewModel.VendorDetailViewModel>
+<div class="container-fluid">
+    <div class="overlay">
+
+        <table class="table table-responsive table-hover table-bordered" style="margin-top:100px;margin-left:150px;background-color:#b5aa67;margin-right:40px;width:1400px;overflow:scroll;">
+            <thead style="background-color:#bab9b6;height:60px;">
+                <tr>
+                    <th style="text-align:center;">#</th>
+                    <th></th>
+                    <th style="text-align:center;">Name </th>
+                    <th style="text-align:center;">Type</th>
+                    <th style="text-align:center;">Address</th>
+                    <th style="text-align:center;">Likes</th>
+                    <th style="text-align:center;">Detail</th>
+
+                </tr>
+            </thead>
+
+            @{int t = 1;
+                var Con = TempData["CountryId"];
+                int CountryId = Convert.ToInt32(Con);
+                var Cit = TempData["CityId"];
+                int CityId = Convert.ToInt32(Cit);
+
+            }
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <th scope="row">@t</th>
+                        @if (i.VendorPictureData != null)
+                        {
+                            <td><img src="data:image;base64,@System.Convert.ToBase64String(i.VendorPictureData)" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+                        else
+                        {
+                            <td><img src="~/Content/Images/No_Image.png" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+
+                        <td>@i.VendorName</td>
+                        <td>@i.VendorTypeName</td>
+                        <td>@i.VendorAddress</td>
+                        <td>@i.VendorLike</td>
+                        <td>@i.VendorShortDetail <br />@Html.ActionLink("Check Detail", "VendorDetail", "Vendor", new { VendorId = i.VendorId, CountryId = CountryId, CityId = CityId, Page = 2 }, null)</td>
+
+                    </tr>
+
+
+                    t++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

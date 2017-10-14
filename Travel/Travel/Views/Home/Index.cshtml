@@ -1,0 +1,115 @@
+﻿
+@model Travel.Models.ViewModel.IndexViewModel
+
+<!-- Find a Tour -->
+<div class="container-fluid">
+  @if(Session["userCode"]==null)
+  {
+      <a href="/Admin/SignIn">Admin</a>
+  }
+    <section class="tour section-wrapper container">
+        <h2 class="section-title">
+            Find a Tour
+        </h2>
+        <p class="section-subtitle">
+            Where would you like to go?
+        </p>
+        @if (TempData["not"] != null)
+        { <p class="alert alert-success" id="successMessage" style="height:40px;margin-bottom:40px;margin-top:10px;">@TempData["not"] </p>
+        }
+        <form id="myfrom" name="myform" class="form-horizontal" method="post" action="/Home/Search">
+            <div class="row">
+                <div class="col-md-4 col-sm-8" style="margin-left:150px;">
+                    <div class="form-dropdown">
+                        <div class="form-group">
+                            <label for="sel1">Select Country (select one):</label>
+                            @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-8" style="margin-left:150px;">
+                    <div class="form-dropdown">
+                        <div class="form-group">
+                            <label for="sel1">Select City (select one):</label>
+                            <div id="City" class="form-group">
+                                @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                                @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6" style="margin-left:150px;">
+                    <div class="input-group date" id="StartDate">
+                        <input type="text" for="Arrival" id="Arrival" name="Arrival" class="form-control border-radius border-right" data-format="dd/MM/yyyy" placeholder="Arrival" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-left:248px;">
+                    <div class="input-group date" id="EndDate">
+                        <input type="text" for="Departure" id="Departure" name="Departure" class="form-control border-radius border-right" data-format="dd/MM/yyyy" placeholder="Departure" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 control-label">
+                    <input id="btnSubmit" type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>
+
+    </section> <!-- /.tour -->
+  
+
+
+    <div class="subscribe section-wrapper">
+        <a class="brand-logo" href="index.html" title="HOME"><div style="white-space:nowrap;"><img src="~/Content/Images/android-icon-144x144.png" style="height:30px;width:50px;" /><span style="color:green;font-size:30px;">Travelous</span></div></a>
+        <p class="subscribe-now">
+            Subscribe to our Newsletter
+        </p>
+        <div class="container">
+            <div class="row" id="subscribe">
+                <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                    @using (Html.BeginForm("Subscriber", "Home", FormMethod.Post, new { @id = "SignInUserForm", @role = "form" }))
+                    {
+                        <div class="input-group">
+                            <input name="mail" type="email" class="form-control border-radius" placeholder="Email address">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default border-radius custom-sub-btn" type="submit">DONE</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    }
+                </div>
+
+                <h4>@ViewData["mail"]</h4>
+
+            </div>
+        </div>
+
+        <ul class="social-icon">
+            <li><a href="https://twitter.com/intent/tweet?url=https://ShepHerd.com" target="_blank" title="share on twitter"><i class="ion-social-twitter"></i></a></li>
+            <li><a href="https://facebook.com/sharer.php?u=https://ShepHerd.com" target="_blank" title="share on facebook"><i class="ion-social-facebook"></i></a></li>
+            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=https://ShepHerd.com" target="_blank"><i class="ion-social-linkedin-outline"></i></a></li>
+            <li><a href="https://plus.google.com/share?url=https://ShepHerd.com" target="_blank"><i class="ion-social-googleplus"></i></a></li>
+        </ul>
+    </div> <!-- /.subscribe -->
+      
+</div>
+<script src="~/Scripts/jquery-1.11.2.min.js"></script>
+
+<script src="~/Scripts/moment.js"></script>
+@*<script src="~/Scripts/bootstrap.js"></script>*@
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/Own/DatePicker.js"></script>
+

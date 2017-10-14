@@ -1,0 +1,155 @@
+﻿<head>
+
+
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+   
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+
+</head>
+
+
+@model Travel.Models.ViewModel.AddOfferViewModel
+
+@{
+    ViewBag.Title = "Add a new Offer";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+@{ Html.EnableClientValidation(true); }
+<div class="container-fluid">
+    <div class="overlay">
+
+        <h2>Add Offer</h2>
+        @if (TempData["Success"] != null)
+        {
+            <p class="alert alert-success" id="successMessage" style="height:40px;margin:20px;">@TempData["Success"]</p>
+        }
+
+        @using (Html.BeginForm("AddOffer", "Offer", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:30px; width:1100px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+            <div class="form-group">
+                <div clas="row input-group">
+                    @Html.LabelFor(m => m.OfferPictureData, new { @class = "no-space-break col-md-4 control-label" })
+
+                    <input for="OfferPictureData" name="AddPicture" id="AddPicture" type="file" accept="image/*" />
+                </div>
+
+            </div>
+
+
+            @Html.TextBoxFor(m => m.VendorId, new { @type = "hidden" })
+            @Html.TextBoxFor(m => m.CountryId, new { @type = "hidden" })
+            @Html.TextBoxFor(m => m.CityId, new { @type = "hidden" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferName, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.OfferName, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.OfferName, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferTypeId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.OfferTypeId, Model.OfferTypeList, "--Select--", new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.OfferTypeId, "", new { @class = "text-danger " })
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferPrice, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.OfferPrice, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.OfferPrice, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferStartTime, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group date" id="StartDate">
+
+                        <input type="text" for="OfferStartTime" id="OfferStartTime" name="OfferStartTime" class="form-control border-radius border-right" data-format="dd/MM/yyyy" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+
+                        @Html.ValidationMessageFor(m => m.OfferStartTime, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferStopTime, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group date" id="EndDate">
+                        <input type="text" for="OfferStopTime" id="OfferStopTime" name="OfferStopTime" class="form-control border-radius border-right" data-format="dd/MM/yyyy" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                        @Html.ValidationMessageFor(m => m.OfferStopTime, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OfferDetail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.OfferDetail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.OfferDetail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="btnCreate" onclick="Validate(this, event);" class="btn btn-default border-radius" value="Update" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        <p style="text-align:center;color:Black;">@ViewData["message"]</p>
+
+
+    </div>
+    </div>
+    <script src="~/Scripts/jquery-1.11.2.min.js"></script>
+
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/Own/Alert.js"></script>
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/Own/Editor.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/Own/DatePicker.js"></script>
+

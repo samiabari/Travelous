@@ -1,0 +1,70 @@
+﻿
+
+<head>
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+</head>
+
+@model Travel.Models.ViewModel.TouristEmergencyInfoViewModel
+
+@{
+    ViewBag.Title = "Change Emergency Info";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+
+@{ Html.EnableClientValidation(true); }
+
+
+<div class="container-fluid">
+
+    <div class="overlay">
+
+
+        @using (Html.BeginForm("ChangeEmergencyInfo", "Tourist", FormMethod.Post, new { @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:200px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+            @Html.TextBoxFor(m => m.TouristId, new { @class = "form-control", @type = "hidden" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristEmergencyPhnNo, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.TouristEmergencyPhnNo, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristEmergencyPhnNo, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristAddress, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.TouristAddress, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristAddress, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="btnCreate" onclick="Validate(this, event);" class="btn btn-default border-radius" value="Update" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+        <p style="text-align:center;color:Black;">@ViewData["message"]</p>
+
+
+    </div>
+    </div>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/Own/Alert.js"></script>

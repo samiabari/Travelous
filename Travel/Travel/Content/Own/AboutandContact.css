@@ -1,0 +1,52 @@
+﻿html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlayed{
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+  text-align:center;
+  overflow:auto;
+}
+.about{
+
+   display: inline-block;
+    text-align: left;
+    background-color:#bbbb77;
+    color:#006666;
+    width:1400px;
+    height:1000px;
+    margin:50px;
+     border-radius: 25px;
+     padding:20px;
+      border-style: solid;
+     
+    border-color: green green yellow yellow;
+}
+#ab{
+    margin-top:50px;
+}
+#Manager{
+      margin-top:10px;
+      height:400px;
+}
+#Contact{
+    margin-top:20px;
+}
+#para{
+    margin-top:10px;
+    width:1400px;
+    margin-left:100px;
+    float:right;
+}
+p{
+    color:black;
+}

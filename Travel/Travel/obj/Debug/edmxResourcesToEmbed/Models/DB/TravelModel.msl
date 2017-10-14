@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TourDBModelStoreContainer" CdmEntityContainer="TourDBEntities">
+    <EntitySetMapping Name="AlbumTypes">
+      <EntityTypeMapping TypeName="TourDBModel.AlbumType">
+        <MappingFragment StoreEntitySet="AlbumType">
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="AlbumTypeName" ColumnName="AlbumTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckIns">
+      <EntityTypeMapping TypeName="TourDBModel.CheckIn">
+        <MappingFragment StoreEntitySet="CheckIn">
+          <ScalarProperty Name="CheckInId" ColumnName="CheckInId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="TourDBModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="TourDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hosts">
+      <EntityTypeMapping TypeName="TourDBModel.Host">
+        <MappingFragment StoreEntitySet="Host">
+          <ScalarProperty Name="HostId" ColumnName="HostId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="HostingCountryId" ColumnName="HostingCountryId" />
+          <ScalarProperty Name="HostingCityId" ColumnName="HostingCityId" />
+          <ScalarProperty Name="HostingPlaceAddress" ColumnName="HostingPlaceAddress" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="HostingStartTime" ColumnName="HostingStartTime" />
+          <ScalarProperty Name="HostingStopTime" ColumnName="HostingStopTime" />
+          <ScalarProperty Name="HostingDetail" ColumnName="HostingDetail" />
+          <ScalarProperty Name="HostingStatus" ColumnName="HostingStatus" />
+          <ScalarProperty Name="HostAdminsPermit" ColumnName="HostAdminsPermit" />
+          <ScalarProperty Name="HostDateOfAccountCreation" ColumnName="HostDateOfAccountCreation" />
+          <ScalarProperty Name="HostProfilePicId" ColumnName="HostProfilePicId" />
+          <ScalarProperty Name="HostTypeId" ColumnName="HostTypeId" />
+          <ScalarProperty Name="HostingPhnNo" ColumnName="HostingPhnNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HostAlbums">
+      <EntityTypeMapping TypeName="TourDBModel.HostAlbum">
+        <MappingFragment StoreEntitySet="HostAlbum">
+          <ScalarProperty Name="HostAlbumId" ColumnName="HostAlbumId" />
+          <ScalarProperty Name="HostId" ColumnName="HostId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="HostAlbumPrivacy" ColumnName="HostAlbumPrivacy" />
+          <ScalarProperty Name="HostAlbumDateOfAdded" ColumnName="HostAlbumDateOfAdded" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="HostAlbumAdminPermit" ColumnName="HostAlbumAdminPermit" />
+          <ScalarProperty Name="HostAlbumName" ColumnName="HostAlbumName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HostPictures">
+      <EntityTypeMapping TypeName="TourDBModel.HostPicture">
+        <MappingFragment StoreEntitySet="HostPicture">
+          <ScalarProperty Name="HostPictureId" ColumnName="HostPictureId" />
+          <ScalarProperty Name="HostAlbumId" ColumnName="HostAlbumId" />
+          <ScalarProperty Name="HostId" ColumnName="HostId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="HostPictureData" ColumnName="HostPictureData" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="HostPictureDateOfAdded" ColumnName="HostPictureDateOfAdded" />
+          <ScalarProperty Name="HostPicturePrivacy" ColumnName="HostPicturePrivacy" />
+          <ScalarProperty Name="HostPictureAdminPermit" ColumnName="HostPictureAdminPermit" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HostTypes">
+      <EntityTypeMapping TypeName="TourDBModel.HostType">
+        <MappingFragment StoreEntitySet="HostType">
+          <ScalarProperty Name="HostTypeId" ColumnName="HostTypeId" />
+          <ScalarProperty Name="HostTypeName" ColumnName="HostTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offers">
+      <EntityTypeMapping TypeName="TourDBModel.Offer">
+        <MappingFragment StoreEntitySet="Offer">
+          <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="OfferTypeId" ColumnName="OfferTypeId" />
+          <ScalarProperty Name="OfferPrice" ColumnName="OfferPrice" />
+          <ScalarProperty Name="OfferDetail" ColumnName="OfferDetail" />
+          <ScalarProperty Name="OfferStartTime" ColumnName="OfferStartTime" />
+          <ScalarProperty Name="OfferStopTime" ColumnName="OfferStopTime" />
+          <ScalarProperty Name="OfferStatus" ColumnName="OfferStatus" />
+          <ScalarProperty Name="OfferAdminsPermit" ColumnName="OfferAdminsPermit" />
+          <ScalarProperty Name="OfferDateOfAccountCreation" ColumnName="OfferDateOfAccountCreation" />
+          <ScalarProperty Name="OfferProfilePicId" ColumnName="OfferProfilePicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferAlbums">
+      <EntityTypeMapping TypeName="TourDBModel.OfferAlbum">
+        <MappingFragment StoreEntitySet="OfferAlbum">
+          <ScalarProperty Name="OfferAlbumId" ColumnName="OfferAlbumId" />
+          <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="OfferAlbumPrivacy" ColumnName="OfferAlbumPrivacy" />
+          <ScalarProperty Name="OfferAlbumDateOfAdded" ColumnName="OfferAlbumDateOfAdded" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="OfferAlbumAdminPermit" ColumnName="OfferAlbumAdminPermit" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="OfferAlbumName" ColumnName="OfferAlbumName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferPictures">
+      <EntityTypeMapping TypeName="TourDBModel.OfferPicture">
+        <MappingFragment StoreEntitySet="OfferPicture">
+          <ScalarProperty Name="OfferPictureId" ColumnName="OfferPictureId" />
+          <ScalarProperty Name="OfferAlbumId" ColumnName="OfferAlbumId" />
+          <ScalarProperty Name="OfferId" ColumnName="OfferId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="OfferPictureData" ColumnName="OfferPictureData" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="OfferPictureDateOfAdded" ColumnName="OfferPictureDateOfAdded" />
+          <ScalarProperty Name="OfferPicturePrivacy" ColumnName="OfferPicturePrivacy" />
+          <ScalarProperty Name="OfferPictureAdminPermit" ColumnName="OfferPictureAdminPermit" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfferTypes">
+      <EntityTypeMapping TypeName="TourDBModel.OfferType">
+        <MappingFragment StoreEntitySet="OfferType">
+          <ScalarProperty Name="OfferTypeId" ColumnName="OfferTypeId" />
+          <ScalarProperty Name="OfferTypeName" ColumnName="OfferTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Places">
+      <EntityTypeMapping TypeName="TourDBModel.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceTypeId" ColumnName="PlaceTypeId" />
+          <ScalarProperty Name="PlaceAddress" ColumnName="PlaceAddress" />
+          <ScalarProperty Name="PlaceDetail" ColumnName="PlaceDetail" />
+          <ScalarProperty Name="PlaceAdminsPermit" ColumnName="PlaceAdminsPermit" />
+          <ScalarProperty Name="PlaceDateOfAccountCreation" ColumnName="PlaceDateOfAccountCreation" />
+          <ScalarProperty Name="PlaceFavourite" ColumnName="PlaceFavourite" />
+          <ScalarProperty Name="PlaceProfilePicId" ColumnName="PlaceProfilePicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaceAlbums">
+      <EntityTypeMapping TypeName="TourDBModel.PlaceAlbum">
+        <MappingFragment StoreEntitySet="PlaceAlbum">
+          <ScalarProperty Name="PlaceAlbumId" ColumnName="PlaceAlbumId" />
+          <ScalarProperty Name="PlaceAlbumName" ColumnName="PlaceAlbumName" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="PlaceAlbumAdminPermit" ColumnName="PlaceAlbumAdminPermit" />
+          <ScalarProperty Name="PlaceAlbumDateOfCreation" ColumnName="PlaceAlbumDateOfCreation" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceAlbumPivacy" ColumnName="PlaceAlbumPivacy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlacePictures">
+      <EntityTypeMapping TypeName="TourDBModel.PlacePicture">
+        <MappingFragment StoreEntitySet="PlacePicture">
+          <ScalarProperty Name="PlacePictureId" ColumnName="PlacePictureId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="PlaceAlbumId" ColumnName="PlaceAlbumId" />
+          <ScalarProperty Name="PlacePictureData" ColumnName="PlacePictureData" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="PlacePictureDateOfAdded" ColumnName="PlacePictureDateOfAdded" />
+          <ScalarProperty Name="PlacePictureAdminPermit" ColumnName="PlacePictureAdminPermit" />
+          <ScalarProperty Name="PlacePicturePrivacy" ColumnName="PlacePicturePrivacy" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaceTypes">
+      <EntityTypeMapping TypeName="TourDBModel.PlaceType">
+        <MappingFragment StoreEntitySet="PlaceType">
+          <ScalarProperty Name="PlaceTypeId" ColumnName="PlaceTypeId" />
+          <ScalarProperty Name="PlaceTypeName" ColumnName="PlaceTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscribers">
+      <EntityTypeMapping TypeName="TourDBModel.Subscriber">
+        <MappingFragment StoreEntitySet="Subscriber">
+          <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+          <ScalarProperty Name="SubscriberEmail" ColumnName="SubscriberEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tourists">
+      <EntityTypeMapping TypeName="TourDBModel.Tourist">
+        <MappingFragment StoreEntitySet="Tourist">
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="TouristName" ColumnName="TouristName" />
+          <ScalarProperty Name="TouristEmail" ColumnName="TouristEmail" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="TouristPhnNo" ColumnName="TouristPhnNo" />
+          <ScalarProperty Name="TouristAddress" ColumnName="TouristAddress" />
+          <ScalarProperty Name="TouristEmergencyPhnNo" ColumnName="TouristEmergencyPhnNo" />
+          <ScalarProperty Name="TouristsStatus" ColumnName="TouristsStatus" />
+          <ScalarProperty Name="TouristsHostStatus" ColumnName="TouristsHostStatus" />
+          <ScalarProperty Name="TouristAdminsPermit" ColumnName="TouristAdminsPermit" />
+          <ScalarProperty Name="TouristDateOfAccountCreation" ColumnName="TouristDateOfAccountCreation" />
+          <ScalarProperty Name="TouristPassword" ColumnName="TouristPassword" />
+          <ScalarProperty Name="TouristProfilePicId" ColumnName="TouristProfilePicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TouristAlbums">
+      <EntityTypeMapping TypeName="TourDBModel.TouristAlbum">
+        <MappingFragment StoreEntitySet="TouristAlbum">
+          <ScalarProperty Name="TouristAlbumId" ColumnName="TouristAlbumId" />
+          <ScalarProperty Name="TouristAlbumName" ColumnName="TouristAlbumName" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="TouristAlbumPrivacy" ColumnName="TouristAlbumPrivacy" />
+          <ScalarProperty Name="TouristAlbumDateOfCreated" ColumnName="TouristAlbumDateOfCreated" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="TouristAlbumAdminPermit" ColumnName="TouristAlbumAdminPermit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TouristPictures">
+      <EntityTypeMapping TypeName="TourDBModel.TouristPicture">
+        <MappingFragment StoreEntitySet="TouristPicture">
+          <ScalarProperty Name="TouristPictureId" ColumnName="TouristPictureId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="TouristAlbumId" ColumnName="TouristAlbumId" />
+          <ScalarProperty Name="TouristPictureData" ColumnName="TouristPictureData" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="TouristPictureDateOfAdded" ColumnName="TouristPictureDateOfAdded" />
+          <ScalarProperty Name="TouristPicturePrivarcy" ColumnName="TouristPicturePrivarcy" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="TouristPictureAdminPermit" ColumnName="TouristPictureAdminPermit" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="TourDBModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorTypeId" ColumnName="VendorTypeId" />
+          <ScalarProperty Name="VendorEmail" ColumnName="VendorEmail" />
+          <ScalarProperty Name="VendorPhnNo" ColumnName="VendorPhnNo" />
+          <ScalarProperty Name="VendorAddress" ColumnName="VendorAddress" />
+          <ScalarProperty Name="VendorOfficeName" ColumnName="VendorOfficeName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="VendorOfficePhnNo" ColumnName="VendorOfficePhnNo" />
+          <ScalarProperty Name="VendorOfficeAddress" ColumnName="VendorOfficeAddress" />
+          <ScalarProperty Name="VendorOfficeWebsite" ColumnName="VendorOfficeWebsite" />
+          <ScalarProperty Name="VendorsVendorShipDetail" ColumnName="VendorsVendorShipDetail" />
+          <ScalarProperty Name="VendorsStatus" ColumnName="VendorsStatus" />
+          <ScalarProperty Name="VendorOfferStatus" ColumnName="VendorOfferStatus" />
+          <ScalarProperty Name="VendorAdminsPermit" ColumnName="VendorAdminsPermit" />
+          <ScalarProperty Name="VendorDateOfAccountCreation" ColumnName="VendorDateOfAccountCreation" />
+          <ScalarProperty Name="VendorPassword" ColumnName="VendorPassword" />
+          <ScalarProperty Name="VendorFavourite" ColumnName="VendorFavourite" />
+          <ScalarProperty Name="VendorProfilePicId" ColumnName="VendorProfilePicId" />
+          <ScalarProperty Name="VendorOfficeMail" ColumnName="VendorOfficeMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorAlbums">
+      <EntityTypeMapping TypeName="TourDBModel.VendorAlbum">
+        <MappingFragment StoreEntitySet="VendorAlbum">
+          <ScalarProperty Name="VendorAlbumId" ColumnName="VendorAlbumId" />
+          <ScalarProperty Name="VendorAlbumName" ColumnName="VendorAlbumName" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="VendorAlbumPrivacy" ColumnName="VendorAlbumPrivacy" />
+          <ScalarProperty Name="VendorDateOfAlbumCreated" ColumnName="VendorDateOfAlbumCreated" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="VendorAlbumAdminPermit" ColumnName="VendorAlbumAdminPermit" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorPictures">
+      <EntityTypeMapping TypeName="TourDBModel.VendorPicture">
+        <MappingFragment StoreEntitySet="VendorPicture">
+          <ScalarProperty Name="VendorPictureId" ColumnName="VendorPictureId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="VendorAlbumId" ColumnName="VendorAlbumId" />
+          <ScalarProperty Name="VendorPictureData" ColumnName="VendorPictureData" />
+          <ScalarProperty Name="AlbumTypeId" ColumnName="AlbumTypeId" />
+          <ScalarProperty Name="VendorPictureDateOfAdded" ColumnName="VendorPictureDateOfAdded" />
+          <ScalarProperty Name="VendorPicturePrivacy" ColumnName="VendorPicturePrivacy" />
+          <ScalarProperty Name="VendorPictureAdminPermit" ColumnName="VendorPictureAdminPermit" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorTypes">
+      <EntityTypeMapping TypeName="TourDBModel.VendorType">
+        <MappingFragment StoreEntitySet="VendorType">
+          <ScalarProperty Name="VendorTypeId" ColumnName="VendorTypeId" />
+          <ScalarProperty Name="VendorTypeName" ColumnName="VendorTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WishLists">
+      <EntityTypeMapping TypeName="TourDBModel.WishList">
+        <MappingFragment StoreEntitySet="WishList">
+          <ScalarProperty Name="WishlistId" ColumnName="WishlistId" />
+          <ScalarProperty Name="TouristId" ColumnName="TouristId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="WishAddedDate" ColumnName="WishAddedDate" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1712 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AlbumType">
+    <Key>
+      <PropertyRef Name="AlbumTypeId" />
+    </Key>
+    <Property Name="AlbumTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlbumTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CheckIn">
+    <Key>
+      <PropertyRef Name="CheckInId" />
+    </Key>
+    <Property Name="CheckInId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="CheckInDate" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="VendorId" Type="int" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="50" />
+    <Property Name="CountryId" Type="int" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Host">
+    <Key>
+      <PropertyRef Name="HostId" />
+    </Key>
+    <Property Name="HostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="HostingCountryId" Type="int" />
+    <Property Name="HostingCityId" Type="int" />
+    <Property Name="HostingPlaceAddress" Type="varchar(max)" />
+    <Property Name="Rent" Type="varchar(max)" />
+    <Property Name="HostingStartTime" Type="date" />
+    <Property Name="HostingStopTime" Type="date" />
+    <Property Name="HostingDetail" Type="nvarchar(max)" />
+    <Property Name="HostingStatus" Type="bit" />
+    <Property Name="HostAdminsPermit" Type="bit" />
+    <Property Name="HostDateOfAccountCreation" Type="date" />
+    <Property Name="HostProfilePicId" Type="int" />
+    <Property Name="HostTypeId" Type="int" />
+    <Property Name="HostingPhnNo" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HostAlbum">
+    <Key>
+      <PropertyRef Name="HostAlbumId" />
+    </Key>
+    <Property Name="HostAlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HostId" Type="int" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="HostAlbumPrivacy" Type="bit" />
+    <Property Name="HostAlbumDateOfAdded" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="HostAlbumAdminPermit" Type="bit" />
+    <Property Name="HostAlbumName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HostPicture">
+    <Key>
+      <PropertyRef Name="HostPictureId" />
+    </Key>
+    <Property Name="HostPictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HostAlbumId" Type="int" />
+    <Property Name="HostId" Type="int" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="HostPictureData" Type="varbinary(max)" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="HostPictureDateOfAdded" Type="date" />
+    <Property Name="HostPicturePrivacy" Type="bit" />
+    <Property Name="HostPictureAdminPermit" Type="bit" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HostType">
+    <Key>
+      <PropertyRef Name="HostTypeId" />
+    </Key>
+    <Property Name="HostTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HostTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="OfferId" />
+    </Key>
+    <Property Name="OfferId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfferName" Type="varchar(max)" />
+    <Property Name="VendorId" Type="int" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="OfferTypeId" Type="int" />
+    <Property Name="OfferPrice" Type="varchar(max)" />
+    <Property Name="OfferDetail" Type="nvarchar(max)" />
+    <Property Name="OfferStartTime" Type="date" />
+    <Property Name="OfferStopTime" Type="date" />
+    <Property Name="OfferStatus" Type="bit" />
+    <Property Name="OfferAdminsPermit" Type="bit" />
+    <Property Name="OfferDateOfAccountCreation" Type="date" />
+    <Property Name="OfferProfilePicId" Type="int" />
+  </EntityType>
+  <EntityType Name="OfferAlbum">
+    <Key>
+      <PropertyRef Name="OfferAlbumId" />
+    </Key>
+    <Property Name="OfferAlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfferId" Type="int" />
+    <Property Name="VendorId" Type="int" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="OfferAlbumPrivacy" Type="bit" />
+    <Property Name="OfferAlbumDateOfAdded" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="OfferAlbumAdminPermit" Type="bit" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="OfferAlbumName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="OfferPicture">
+    <Key>
+      <PropertyRef Name="OfferPictureId" />
+    </Key>
+    <Property Name="OfferPictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfferAlbumId" Type="int" />
+    <Property Name="OfferId" Type="int" />
+    <Property Name="VendorId" Type="int" />
+    <Property Name="OfferPictureData" Type="varbinary(max)" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="OfferPictureDateOfAdded" Type="date" />
+    <Property Name="OfferPicturePrivacy" Type="bit" />
+    <Property Name="OfferPictureAdminPermit" Type="bit" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+  </EntityType>
+  <EntityType Name="OfferType">
+    <Key>
+      <PropertyRef Name="OfferTypeId" />
+    </Key>
+    <Property Name="OfferTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfferTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="PlaceId" />
+    </Key>
+    <Property Name="PlaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceName" Type="varchar(max)" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceTypeId" Type="int" />
+    <Property Name="PlaceAddress" Type="varchar(max)" />
+    <Property Name="PlaceDetail" Type="nvarchar(max)" />
+    <Property Name="PlaceAdminsPermit" Type="bit" />
+    <Property Name="PlaceDateOfAccountCreation" Type="date" />
+    <Property Name="PlaceFavourite" Type="int" />
+    <Property Name="PlaceProfilePicId" Type="int" />
+  </EntityType>
+  <EntityType Name="PlaceAlbum">
+    <Key>
+      <PropertyRef Name="PlaceAlbumId" />
+    </Key>
+    <Property Name="PlaceAlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceAlbumName" Type="varchar(max)" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="PlaceAlbumAdminPermit" Type="bit" />
+    <Property Name="PlaceAlbumDateOfCreation" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceAlbumPivacy" Type="bit" />
+  </EntityType>
+  <EntityType Name="PlacePicture">
+    <Key>
+      <PropertyRef Name="PlacePictureId" />
+    </Key>
+    <Property Name="PlacePictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="PlaceAlbumId" Type="int" />
+    <Property Name="PlacePictureData" Type="varbinary(max)" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="PlacePictureDateOfAdded" Type="date" />
+    <Property Name="PlacePictureAdminPermit" Type="bit" />
+    <Property Name="PlacePicturePrivacy" Type="bit" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <EntityType Name="PlaceType">
+    <Key>
+      <PropertyRef Name="PlaceTypeId" />
+    </Key>
+    <Property Name="PlaceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaceTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Subscriber">
+    <Key>
+      <PropertyRef Name="SubscriberId" />
+    </Key>
+    <Property Name="SubscriberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubscriberEmail" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tourist">
+    <Key>
+      <PropertyRef Name="TouristId" />
+    </Key>
+    <Property Name="TouristId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristName" Type="varchar(max)" />
+    <Property Name="TouristEmail" Type="varchar(max)" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="TouristPhnNo" Type="varchar(max)" />
+    <Property Name="TouristAddress" Type="varchar(max)" />
+    <Property Name="TouristEmergencyPhnNo" Type="varchar(max)" />
+    <Property Name="TouristsStatus" Type="bit" />
+    <Property Name="TouristsHostStatus" Type="bit" />
+    <Property Name="TouristAdminsPermit" Type="bit" />
+    <Property Name="TouristDateOfAccountCreation" Type="date" />
+    <Property Name="TouristPassword" Type="varchar(max)" />
+    <Property Name="TouristProfilePicId" Type="int" />
+  </EntityType>
+  <EntityType Name="TouristAlbum">
+    <Key>
+      <PropertyRef Name="TouristAlbumId" />
+    </Key>
+    <Property Name="TouristAlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristAlbumName" Type="varchar(max)" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="TouristAlbumPrivacy" Type="bit" />
+    <Property Name="TouristAlbumDateOfCreated" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="TouristAlbumAdminPermit" Type="bit" />
+  </EntityType>
+  <EntityType Name="TouristPicture">
+    <Key>
+      <PropertyRef Name="TouristPictureId" />
+    </Key>
+    <Property Name="TouristPictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristId" Type="int" />
+    <Property Name="TouristAlbumId" Type="int" />
+    <Property Name="TouristPictureData" Type="varbinary(max)" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="TouristPictureDateOfAdded" Type="date" />
+    <Property Name="TouristPicturePrivarcy" Type="bit" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="TouristPictureAdminPermit" Type="bit" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="VendorId" />
+    </Key>
+    <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorName" Type="varchar(max)" />
+    <Property Name="VendorTypeId" Type="int" />
+    <Property Name="VendorEmail" Type="varchar(max)" />
+    <Property Name="VendorPhnNo" Type="varchar(max)" />
+    <Property Name="VendorAddress" Type="varchar(max)" />
+    <Property Name="VendorOfficeName" Type="varchar(max)" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="VendorOfficePhnNo" Type="varchar(max)" />
+    <Property Name="VendorOfficeAddress" Type="varchar(max)" />
+    <Property Name="VendorOfficeWebsite" Type="varchar(max)" />
+    <Property Name="VendorsVendorShipDetail" Type="nvarchar(max)" />
+    <Property Name="VendorsStatus" Type="bit" />
+    <Property Name="VendorOfferStatus" Type="bit" />
+    <Property Name="VendorAdminsPermit" Type="bit" />
+    <Property Name="VendorDateOfAccountCreation" Type="date" />
+    <Property Name="VendorPassword" Type="varchar(max)" />
+    <Property Name="VendorFavourite" Type="int" />
+    <Property Name="VendorProfilePicId" Type="int" />
+    <Property Name="VendorOfficeMail" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="VendorAlbum">
+    <Key>
+      <PropertyRef Name="VendorAlbumId" />
+    </Key>
+    <Property Name="VendorAlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorAlbumName" Type="varchar(max)" />
+    <Property Name="VendorId" Type="int" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="VendorAlbumPrivacy" Type="bit" />
+    <Property Name="VendorDateOfAlbumCreated" Type="date" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="VendorAlbumAdminPermit" Type="bit" />
+    <Property Name="PlaceId" Type="int" />
+  </EntityType>
+  <EntityType Name="VendorPicture">
+    <Key>
+      <PropertyRef Name="VendorPictureId" />
+    </Key>
+    <Property Name="VendorPictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorId" Type="int" Nullable="false" />
+    <Property Name="VendorAlbumId" Type="int" Nullable="false" />
+    <Property Name="VendorPictureData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="AlbumTypeId" Type="int" />
+    <Property Name="VendorPictureDateOfAdded" Type="date" />
+    <Property Name="VendorPicturePrivacy" Type="bit" />
+    <Property Name="VendorPictureAdminPermit" Type="bit" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+  </EntityType>
+  <EntityType Name="VendorType">
+    <Key>
+      <PropertyRef Name="VendorTypeId" />
+    </Key>
+    <Property Name="VendorTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WishList">
+    <Key>
+      <PropertyRef Name="WishlistId" />
+    </Key>
+    <Property Name="WishlistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TouristId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="WishAddedDate" Type="date" />
+    <Property Name="VendorId" Type="int" />
+  </EntityType>
+  <Association Name="FK_CheckIn_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="CheckIn">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckIn_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="CheckIn">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckIn_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="CheckIn">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckIn_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="CheckIn">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckIn_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="CheckIn" Type="Self.CheckIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="CheckIn">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="HostingCityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="HostingCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_HostPicture">
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="0..1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HostPicture">
+        <PropertyRef Name="HostPictureId" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="HostProfilePicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_HostType">
+    <End Role="HostType" Type="Self.HostType" Multiplicity="0..1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HostType">
+        <PropertyRef Name="HostTypeId" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="HostTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Host_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="Host" Type="Self.Host" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="Host">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_Host">
+    <End Role="Host" Type="Self.Host" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Host">
+        <PropertyRef Name="HostId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="HostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostAlbum_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="HostAlbum">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_Host">
+    <End Role="Host" Type="Self.Host" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Host">
+        <PropertyRef Name="HostId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="HostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_HostAlbum">
+    <End Role="HostAlbum" Type="Self.HostAlbum" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HostAlbum">
+        <PropertyRef Name="HostAlbumId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="HostAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HostPicture_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="HostPicture" Type="Self.HostPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="HostPicture">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_OfferPicture">
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferPicture">
+        <PropertyRef Name="OfferPictureId" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="OfferProfilePicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offer_OfferType">
+    <End Role="OfferType" Type="Self.OfferType" Multiplicity="0..1" />
+    <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferType">
+        <PropertyRef Name="OfferTypeId" />
+      </Principal>
+      <Dependent Role="Offer">
+        <PropertyRef Name="OfferTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_Offer">
+    <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offer">
+        <PropertyRef Name="OfferId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="OfferId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferAlbum_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="OfferAlbum">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_Offer">
+    <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offer">
+        <PropertyRef Name="OfferId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="OfferId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_OfferAlbum">
+    <End Role="OfferAlbum" Type="Self.OfferAlbum" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferAlbum">
+        <PropertyRef Name="OfferAlbumId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="OfferAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OfferPicture_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="OfferPicture" Type="Self.OfferPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="OfferPicture">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_PlacePicture">
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlacePicture">
+        <PropertyRef Name="PlacePictureId" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="PlaceProfilePicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_PlaceType">
+    <End Role="PlaceType" Type="Self.PlaceType" Multiplicity="0..1" />
+    <End Role="Place" Type="Self.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlaceType">
+        <PropertyRef Name="PlaceTypeId" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="PlaceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlaceAlbum_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="PlaceAlbum" Type="Self.PlaceAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="PlaceAlbum">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlaceAlbum_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="PlaceAlbum" Type="Self.PlaceAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="PlaceAlbum">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlaceAlbum_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="PlaceAlbum" Type="Self.PlaceAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="PlaceAlbum">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlaceAlbum_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="PlaceAlbum" Type="Self.PlaceAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="PlaceAlbum">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlacePicture_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="PlacePicture">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlacePicture_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="PlacePicture">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlacePicture_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="PlacePicture">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlacePicture_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="PlacePicture">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlacePicture_PlaceAlbum">
+    <End Role="PlaceAlbum" Type="Self.PlaceAlbum" Multiplicity="0..1" />
+    <End Role="PlacePicture" Type="Self.PlacePicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlaceAlbum">
+        <PropertyRef Name="PlaceAlbumId" />
+      </Principal>
+      <Dependent Role="PlacePicture">
+        <PropertyRef Name="PlaceAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tourist_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Tourist">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tourist_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Tourist">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tourist_TouristPicture">
+    <End Role="TouristPicture" Type="Self.TouristPicture" Multiplicity="0..1" />
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TouristPicture">
+        <PropertyRef Name="TouristPictureId" />
+      </Principal>
+      <Dependent Role="Tourist">
+        <PropertyRef Name="TouristProfilePicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristAlbum_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="TouristAlbum">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristAlbum_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="TouristAlbum">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristAlbum_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="TouristAlbum">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristAlbum_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="TouristAlbum">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristAlbum_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="TouristAlbum">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristPicture_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="TouristPicture" Type="Self.TouristPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="TouristPicture">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristPicture_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="0..1" />
+    <End Role="TouristPicture" Type="Self.TouristPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="TouristPicture">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TouristPicture_TouristAlbum">
+    <End Role="TouristAlbum" Type="Self.TouristAlbum" Multiplicity="0..1" />
+    <End Role="TouristPicture" Type="Self.TouristPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TouristAlbum">
+        <PropertyRef Name="TouristAlbumId" />
+      </Principal>
+      <Dependent Role="TouristPicture">
+        <PropertyRef Name="TouristAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_VendorPicture">
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VendorPicture">
+        <PropertyRef Name="VendorPictureId" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="VendorProfilePicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_VendorType">
+    <End Role="VendorType" Type="Self.VendorType" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VendorType">
+        <PropertyRef Name="VendorTypeId" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="VendorTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorAlbum_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="VendorAlbum">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorAlbum_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="VendorAlbum">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorAlbum_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="VendorAlbum">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorAlbum_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="VendorAlbum">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorAlbum_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="VendorAlbum">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_AlbumType">
+    <End Role="AlbumType" Type="Self.AlbumType" Multiplicity="0..1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AlbumType">
+        <PropertyRef Name="AlbumTypeId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="AlbumTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorPicture_VendorAlbum">
+    <End Role="VendorAlbum" Type="Self.VendorAlbum" Multiplicity="1" />
+    <End Role="VendorPicture" Type="Self.VendorPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VendorAlbum">
+        <PropertyRef Name="VendorAlbumId" />
+      </Principal>
+      <Dependent Role="VendorPicture">
+        <PropertyRef Name="VendorAlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WishList_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="WishList">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WishList_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="WishList">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WishList_Place">
+    <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+    <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="WishList">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WishList_Tourist">
+    <End Role="Tourist" Type="Self.Tourist" Multiplicity="1" />
+    <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tourist">
+        <PropertyRef Name="TouristId" />
+      </Principal>
+      <Dependent Role="WishList">
+        <PropertyRef Name="TouristId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TourDBModelStoreContainer">
+    <EntitySet Name="AlbumType" EntityType="Self.AlbumType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CheckIn" EntityType="Self.CheckIn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Host" EntityType="Self.Host" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HostAlbum" EntityType="Self.HostAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HostPicture" EntityType="Self.HostPicture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HostType" EntityType="Self.HostType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferAlbum" EntityType="Self.OfferAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferPicture" EntityType="Self.OfferPicture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OfferType" EntityType="Self.OfferType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlaceAlbum" EntityType="Self.PlaceAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlacePicture" EntityType="Self.PlacePicture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlaceType" EntityType="Self.PlaceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subscriber" EntityType="Self.Subscriber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tourist" EntityType="Self.Tourist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TouristAlbum" EntityType="Self.TouristAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TouristPicture" EntityType="Self.TouristPicture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VendorAlbum" EntityType="Self.VendorAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VendorPicture" EntityType="Self.VendorPicture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VendorType" EntityType="Self.VendorType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CheckIn_City" Association="Self.FK_CheckIn_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="CheckIn" EntitySet="CheckIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckIn_Country" Association="Self.FK_CheckIn_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="CheckIn" EntitySet="CheckIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckIn_Place" Association="Self.FK_CheckIn_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="CheckIn" EntitySet="CheckIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckIn_Tourist" Association="Self.FK_CheckIn_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="CheckIn" EntitySet="CheckIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckIn_Vendor" Association="Self.FK_CheckIn_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="CheckIn" EntitySet="CheckIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_Country" Association="Self.FK_City_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_City" Association="Self.FK_Host_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Host" EntitySet="Host" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_Country" Association="Self.FK_Host_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Host" EntitySet="Host" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_HostPicture" Association="Self.FK_Host_HostPicture">
+      <End Role="HostPicture" EntitySet="HostPicture" />
+      <End Role="Host" EntitySet="Host" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_HostType" Association="Self.FK_Host_HostType">
+      <End Role="HostType" EntitySet="HostType" />
+      <End Role="Host" EntitySet="Host" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Host_Tourist" Association="Self.FK_Host_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="Host" EntitySet="Host" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_AlbumType" Association="Self.FK_HostAlbum_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_City" Association="Self.FK_HostAlbum_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_Country" Association="Self.FK_HostAlbum_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_Host" Association="Self.FK_HostAlbum_Host">
+      <End Role="Host" EntitySet="Host" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_Place" Association="Self.FK_HostAlbum_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostAlbum_Tourist" Association="Self.FK_HostAlbum_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_AlbumType" Association="Self.FK_HostPicture_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_City" Association="Self.FK_HostPicture_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_Country" Association="Self.FK_HostPicture_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_Host" Association="Self.FK_HostPicture_Host">
+      <End Role="Host" EntitySet="Host" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_HostAlbum" Association="Self.FK_HostPicture_HostAlbum">
+      <End Role="HostAlbum" EntitySet="HostAlbum" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_Place" Association="Self.FK_HostPicture_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HostPicture_Tourist" Association="Self.FK_HostPicture_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="HostPicture" EntitySet="HostPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_City" Association="Self.FK_Offer_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_Country" Association="Self.FK_Offer_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_OfferPicture" Association="Self.FK_Offer_OfferPicture">
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offer_OfferType" Association="Self.FK_Offer_OfferType">
+      <End Role="OfferType" EntitySet="OfferType" />
+      <End Role="Offer" EntitySet="Offer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_AlbumType" Association="Self.FK_OfferAlbum_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_City" Association="Self.FK_OfferAlbum_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_Country" Association="Self.FK_OfferAlbum_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_Offer" Association="Self.FK_OfferAlbum_Offer">
+      <End Role="Offer" EntitySet="Offer" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_Place" Association="Self.FK_OfferAlbum_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferAlbum_Vendor" Association="Self.FK_OfferAlbum_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_AlbumType" Association="Self.FK_OfferPicture_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_City" Association="Self.FK_OfferPicture_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_Country" Association="Self.FK_OfferPicture_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_Offer" Association="Self.FK_OfferPicture_Offer">
+      <End Role="Offer" EntitySet="Offer" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_OfferAlbum" Association="Self.FK_OfferPicture_OfferAlbum">
+      <End Role="OfferAlbum" EntitySet="OfferAlbum" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_Place" Association="Self.FK_OfferPicture_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OfferPicture_Vendor" Association="Self.FK_OfferPicture_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="OfferPicture" EntitySet="OfferPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_City" Association="Self.FK_Place_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Country" Association="Self.FK_Place_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_PlacePicture" Association="Self.FK_Place_PlacePicture">
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_PlaceType" Association="Self.FK_Place_PlaceType">
+      <End Role="PlaceType" EntitySet="PlaceType" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlaceAlbum_AlbumType" Association="Self.FK_PlaceAlbum_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="PlaceAlbum" EntitySet="PlaceAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlaceAlbum_City" Association="Self.FK_PlaceAlbum_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="PlaceAlbum" EntitySet="PlaceAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlaceAlbum_Country" Association="Self.FK_PlaceAlbum_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="PlaceAlbum" EntitySet="PlaceAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlaceAlbum_Place" Association="Self.FK_PlaceAlbum_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="PlaceAlbum" EntitySet="PlaceAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlacePicture_AlbumType" Association="Self.FK_PlacePicture_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlacePicture_City" Association="Self.FK_PlacePicture_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlacePicture_Country" Association="Self.FK_PlacePicture_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlacePicture_Place" Association="Self.FK_PlacePicture_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlacePicture_PlaceAlbum" Association="Self.FK_PlacePicture_PlaceAlbum">
+      <End Role="PlaceAlbum" EntitySet="PlaceAlbum" />
+      <End Role="PlacePicture" EntitySet="PlacePicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tourist_City" Association="Self.FK_Tourist_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Tourist" EntitySet="Tourist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tourist_Country" Association="Self.FK_Tourist_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Tourist" EntitySet="Tourist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tourist_TouristPicture" Association="Self.FK_Tourist_TouristPicture">
+      <End Role="TouristPicture" EntitySet="TouristPicture" />
+      <End Role="Tourist" EntitySet="Tourist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristAlbum_AlbumType" Association="Self.FK_TouristAlbum_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristAlbum_City" Association="Self.FK_TouristAlbum_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristAlbum_Country" Association="Self.FK_TouristAlbum_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristAlbum_Place" Association="Self.FK_TouristAlbum_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristAlbum_Tourist" Association="Self.FK_TouristAlbum_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristPicture_AlbumType" Association="Self.FK_TouristPicture_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="TouristPicture" EntitySet="TouristPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristPicture_Tourist" Association="Self.FK_TouristPicture_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="TouristPicture" EntitySet="TouristPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristPicture_TouristAlbum" Association="Self.FK_TouristPicture_TouristAlbum">
+      <End Role="TouristAlbum" EntitySet="TouristAlbum" />
+      <End Role="TouristPicture" EntitySet="TouristPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_City" Association="Self.FK_Vendor_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Country" Association="Self.FK_Vendor_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_VendorPicture" Association="Self.FK_Vendor_VendorPicture">
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_VendorType" Association="Self.FK_Vendor_VendorType">
+      <End Role="VendorType" EntitySet="VendorType" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorAlbum_AlbumType" Association="Self.FK_VendorAlbum_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorAlbum_City" Association="Self.FK_VendorAlbum_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorAlbum_Country" Association="Self.FK_VendorAlbum_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorAlbum_Place" Association="Self.FK_VendorAlbum_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorAlbum_Vendor" Association="Self.FK_VendorAlbum_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_AlbumType" Association="Self.FK_VendorPicture_AlbumType">
+      <End Role="AlbumType" EntitySet="AlbumType" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_City" Association="Self.FK_VendorPicture_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_Country" Association="Self.FK_VendorPicture_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_Place" Association="Self.FK_VendorPicture_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_Vendor" Association="Self.FK_VendorPicture_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorPicture_VendorAlbum" Association="Self.FK_VendorPicture_VendorAlbum">
+      <End Role="VendorAlbum" EntitySet="VendorAlbum" />
+      <End Role="VendorPicture" EntitySet="VendorPicture" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WishList_City" Association="Self.FK_WishList_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="WishList" EntitySet="WishList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WishList_Country" Association="Self.FK_WishList_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="WishList" EntitySet="WishList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WishList_Place" Association="Self.FK_WishList_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="WishList" EntitySet="WishList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WishList_Tourist" Association="Self.FK_WishList_Tourist">
+      <End Role="Tourist" EntitySet="Tourist" />
+      <End Role="WishList" EntitySet="WishList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

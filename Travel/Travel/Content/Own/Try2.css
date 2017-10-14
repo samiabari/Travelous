@@ -1,0 +1,31 @@
+﻿html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlay{
+       margin-left:300px;
+       margin-top:80px;
+   position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5);
+  overflow:auto;
+}
+#UpdateForm {
+ 
+   display: inline-block;
+    text-align: center;
+    background-color:#ebebe0;
+    color:#006666;
+    width:600px;
+    margin:100px;
+     border-radius: 25px;
+     padding:20px;
+      border-style: solid;
+    border-color: green green yellow yellow;
+}

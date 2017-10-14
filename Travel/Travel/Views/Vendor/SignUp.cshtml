@@ -1,0 +1,152 @@
+﻿<head><link href="~/Content/Own/Try.css" rel="stylesheet" /></head>
+
+
+
+@{
+    ViewBag.Title = "Sign Up for Vendorship";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    @model Travel.Models.ViewModel.VendorSignUpViewModel
+    @{
+
+    }
+  
+
+    @{ Html.EnableClientValidation(true); }
+
+
+
+    <div class="container-fluid">
+        <div class="overlay">
+          
+            @using (Html.BeginForm("SignUp", "Vendor", FormMethod.Post, new { @id = "VendorSignUpForm", @class = "form-horizontal", @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorOfficeName, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.VendorOfficeName, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorOfficeName, "", new { @class = "text-danger  " })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorTypeId, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.DropDownListFor(x => x.VendorTypeId, Model.VendorTypeList, "--Select--", new { @id = "ddlVendorType", @name = "VendorTypeId", @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorTypeId, "", new { @class = "text-danger " })
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CountryId, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+
+                            @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CityId, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group" id="City">
+
+                            @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorOfficeWebsite, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.VendorOfficeWebsite, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorOfficeWebsite, "", new { @class = "text-danger " })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorOfficeMail, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.VendorOfficeMail, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorOfficeMail, "", new { @class = "text-danger  " })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorEmail, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.VendorEmail, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorEmail, "", new { @class = "text-danger " })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorPhnNo, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.VendorPhnNo, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorPhnNo, "", new { @class = "text-danger  " })
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorPassword, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.VendorPassword, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorPassword, "", new { @class = "text-danger " })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VendorConfirmPassword, new { @class = "no-space-break col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            @Html.PasswordFor(m => m.VendorConfirmPassword, new { @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.VendorConfirmPassword, "", new { @class = "text-danger " })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <div class="input-group">
+                            <input type="submit" id="VendorSinUpButton" class="btn btn-default border-radius" value="Sign Up As a Vendor" />
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+            @if (TempData["Success"] != null)
+            {
+                <p class="alert alert-success" id="successMessage" style="height:40px;margin-top:20px;">@TempData["Success"]</p>
+            }
+        </div>
+</div>
+
+
+
+
+

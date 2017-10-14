@@ -1,0 +1,116 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+<div class="container-fluid">
+    <div class="overlay">
+        @{
+            ViewBag.Title = "Sign Up for Tourist";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        @model Travel.Models.ViewModel.TouristSignUpViewModel
+        @{
+            ViewBag.Title = "Sign Up";
+        }
+
+        @{ Html.EnableClientValidation(true); }
+
+
+
+
+        @using (Html.BeginForm("SignUp", "Tourist", FormMethod.Post, new { @id = "TouristSignUpForm", @class = "form-horizontal", @role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristName, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.TouristName, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristName, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CityId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group" id="City">
+
+                        @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristEmail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.TouristEmail, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristEmail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristPhnNo, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.TouristPhnNo, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristPhnNo, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristPassword, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.TouristPassword, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristPassword, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.TouristConfirmPassword, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.TouristConfirmPassword, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.TouristConfirmPassword, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="TouristSinUpButton" class="btn btn-default border-radius" value="Sign Up As a Tourist" />
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <p style="text-align:center;color:red;">@ViewData["message"]</p>
+
+    </div>
+    </div>

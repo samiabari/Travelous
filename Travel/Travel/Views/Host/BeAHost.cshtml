@@ -1,0 +1,181 @@
+﻿<head>
+
+
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+
+</head>
+
+
+@model Travel.Models.ViewModel.BeAHostViewModel
+
+@{
+    ViewBag.Title = "Add Hosting Detail";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+@{ Html.EnableClientValidation(true); }
+<div class="container-fluid">
+    <div class="overlay">
+        @if (TempData["Success"] != null)
+        {
+            <p class="alert alert-success" id="successMessage" style="height:40px;">@TempData["Success"]</p>
+        }
+      
+        @using (Html.BeginForm("BeAHost", "Host", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:10px; width:1100px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+            <div class="form-group">
+                <div clas="row input-group">
+                    @Html.LabelFor(m => m.HostPictureData, new { @class = "no-space-break col-md-4 control-label" })
+
+                    <input for="HostPictureData" name="AddPicture" id="AddPicture" type="file" accept="image/*" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostTypeId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.HostTypeId, Model.HostTypeList, "--Select--", new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.HostTypeId, "", new { @class = "text-danger " })
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CityId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group" id="City">
+                        @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            @Html.TextBoxFor(m => m.TouristId, new { @type = "hidden" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostPhnNo, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.HostPhnNo, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.HostPhnNo, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostPrice, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.HostPrice, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.HostPrice, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostAddress, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.HostAddress, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.HostAddress, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostStartTime, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group date" id="StartDate">
+
+                        <input type="text" for="HostStartTime" id="HostStartTime" name="HostStartTime" class="form-control border-radius border-right" data-format="dd/MM/yyyy" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+
+                        @Html.ValidationMessageFor(m => m.HostStartTime, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostStopTime, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group date" id="EndDate">
+                        <input type="text" for="HostStopTime" id="HostStopTime" name="HostStopTime" class="form-control border-radius border-right" data-format="dd/MM/yyyy" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                        @Html.ValidationMessageFor(m => m.HostStopTime, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.HostDetail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.HostDetail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.HostDetail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="btnCreate" onclick="Validate(this, event);" class="btn btn-default border-radius" value="Update" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+     
+
+
+
+    </div>
+    </div>
+    <script src="~/Scripts/jquery-1.11.2.min.js"></script>
+
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/Own/Alert.js"></script>
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/Own/Editor.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/Own/DatePicker.js"></script>
+

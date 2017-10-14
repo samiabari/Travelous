@@ -1,0 +1,80 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+
+@model Travel.Models.ViewModel.SignInUserViewModel
+
+@{
+    ViewBag.Title = "User Sign In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.EnableClientValidation(true); }
+<div class="container-fluid">
+    <div class="overlay">
+
+
+        @using (Html.BeginForm("SignInUser", "Home", FormMethod.Post, new { @id = "SignInUserForm", @class = "form-horizontal", @role = "form", @style = "margin-top:200px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger  " })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserType, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        @Html.RadioButtonFor(m => m.UserType, 1, new { @class = "form-control border-radius border-right" })<span>Vendor</span>
+                    </div>
+                    <div class="input-group">
+                        @Html.RadioButtonFor(m => m.UserType, 2, new { @class = "form-control border-radius border-right" })<span>Tourist</span>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.UserType, "", new { @class = "text-danger " })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="SignInButton" class="btn btn-default border-radius" value="Sign In" />
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        @if (TempData["Problem"] != null)
+        {
+            <p class="alert alert-success" id="successMessage" style="height:40px;">@TempData["Problem"] </p>
+        }
+
+
+
+    </div>
+    </div>

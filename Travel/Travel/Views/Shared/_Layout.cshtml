@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<!--<![endif]-->
+<head>
+    <!-- meta -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="~/content/images/favicon-96x96.png">
+   
+    <title>Travelous</title>
+   
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/ionicons.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/flexslider.css" type="text/css">
+ 
+    <link rel="stylesheet" href="~/Content/main.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.js"></script>
+        <script src="assets/js/respond.js"></script>
+    <![endif]-->
+    <!--[if IE 8]>
+        <script src="assets/js/selectivizr.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index" title="HOME"><div style="white-space:nowrap;"><img src="~/Content/Images/android-icon-144x144.png" style="height:50px;width:70px;float:left;" /><span style="color:green; font-size:50px;margin-top:10px;margin-left:3px;"> Travelous </span></div></a>
+            </div> <!-- /.navbar-header -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/Home/Index">Home</a></li>
+
+
+                 
+                    @if (Session["userCode"] != null)
+                    {
+                        <li><a href="/Place/AddPlace">Add Place</a></li>
+                        if ((string)Session["userCode"] == "tourist")
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-fw fa-user"></i>@Session["TouristName"]</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/UserPanel">Panel</a></li>
+                                    <li><a href="/Home/LogOut">Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else if ((string)Session["userCode"] == "vendor")
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-fw fa-user"></i>@Session["VendorOfficeName"]</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/UserPanel">Panel</a></li>
+                                    <li><a href="/Home/LogOut">Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-fw fa-user"></i>Admin</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/UserPanel">Panel</a></li>
+                                    <li><a href="/Home/LogOut">Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+
+
+                    }
+                    else
+                    {
+                        <li><a href="/Home/SignInUser">Login</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Join<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Vendor/SignUp">Vendor</a></li>
+                                <li><a href="/Tourist/SignUp">Tourist</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Just Travelous<span class="caret"></span></a><ul class="dropdown-menu">
+                            <li><a href="/Home/About#ab">About</a></li>
+                            <li><a href="/Home/About#Contact">Contact</a></li>
+                        
+                        </ul>
+                    </li>
+                </ul> <!-- /.nav -->
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+    <!-- Home -->
+    <div id="header">
+        <div class="flexslider">
+            <ul class="slides">
+                <li class="slider-item" style="background-image: url('/Content/Images/item-1.png')">
+                    <div class="intro container">
+                        <div class="inner-intro">
+                            <h1 class="header-title">
+                                <span>traveling</span> always "good idea"
+                            </h1>
+                            <p class="header-sub-title">
+                                it leaves you speecless, then turns your into a storyteller.
+                            </p>
+                           
+                        </div>
+                    </div>
+                </li> <!-- /.slider-item -->
+                <li class="slider-item" style="background-image: url('/Content/Images/item-2.png')">
+                    <div class="intro">
+                        <div class="inner-intro">
+                            <h1 class="header-title">
+                                to <span>travel</span> is to <span>live</span>
+                            </h1>
+                            <p class="header-sub-title">
+                                it leaves you speecless, then turns your into a storyteller.
+                            </p>
+                          
+                        </div>
+                    </div>
+                </li> <!-- /.slider-item -->
+            </ul> <!-- /.slides -->
+        </div> <!-- /.flexslider -->
+    </div> <!-- /#header -->
+
+
+
+    @RenderBody()
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="text-left">
+                        &copy; by  <span style="color:green;">  Travelous</span>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                  
+                </div>
+                <div class="col-xs-4">
+                    <div class="top">
+                        <a href="#header">
+                            <i class="ion-arrow-up-b"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Styles.Render("~/Content/css")
+
+ 
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.11.2.min.js"></script>
+   
+   
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/contact.js"></script>
+    <script src="~/Scripts/jquery.flexslider.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/Own/CascadingCountryCityList.js"></script>
+   
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+</body>
+</html>

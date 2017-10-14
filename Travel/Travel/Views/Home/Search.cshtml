@@ -1,0 +1,780 @@
+﻿@model Travel.Models.ViewModel.SearchViewModel
+@{
+    var r = ViewData["RestOffer"] as Travel.Models.ViewModel.OfferIndexViewModel;
+    var h = ViewData["HotelOffer"] as Travel.Models.ViewModel.OfferIndexViewModel;
+    var t = ViewData["TransOffer"] as Travel.Models.ViewModel.OfferIndexViewModel;
+    var ta = ViewData["TraAgeOffer"] as Travel.Models.ViewModel.OfferIndexViewModel;
+    var g = ViewData["RestVendor"] as Travel.Models.ViewModel.VendorDetailViewModel;
+    var o = ViewData["HotelVendor"] as Travel.Models.ViewModel.VendorDetailViewModel;
+    var z = ViewData["TransVendor"] as Travel.Models.ViewModel.VendorDetailViewModel;
+    var k = ViewData["TravVendor"] as Travel.Models.ViewModel.VendorDetailViewModel;
+    var C = ViewData["CityId"];
+    int CityId = Convert.ToInt32(C);
+}
+
+<!-- Find a Tour -->
+<div class="container-fluid">
+    <section class="tour section-wrapper container">
+        <h2 class="section-title">
+            Find a Tour
+        </h2>
+        <p class="section-subtitle">
+            Where would you like to go?
+        </p>
+        <form id="myfrom" name="myform" class="form-horizontal" method="post" action="/Home/Search">
+            <div class="row">
+                <div class="col-md-4 col-sm-8" style="margin-left:150px;">
+                    <div class="form-dropdown">
+                        <div class="form-group">
+                            <label for="sel1">Select Country (select one):</label>
+                            @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                            @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-8" style="margin-left:150px;">
+                    <div class="form-dropdown">
+                        <div class="form-group">
+                            <label for="sel1">Select City (select one):</label>
+                            <div id="City" class="form-group">
+                                @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6" style="margin-left:150px;">
+                    <div class="input-group date" id="StartDate">
+                        <input type="text" for="Arrival" id="Arrival" name="Arrival" class="form-control border-radius border-right" data-format="dd/MM/yyyy" placeholder="Arrival" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6" style="margin-left:248px;">
+                    <div class="input-group date" id="EndDate">
+                        <input type="text" for="Departure" id="Departure" name="Departure" class="form-control border-radius border-right" data-format="dd/MM/yyyy" placeholder="Departure" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 control-label">
+                    <input id="btnSubmit" type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>
+    </section> <!-- /.tour -->
+    <!-- Our Blazzing offers -->
+
+
+
+
+    <section class="offer section-wrapper">
+        <div class="container">
+            <h2 class="section-title">
+                Top Blazzing offers
+            </h2>
+            <p class="section-subtitle">
+                Offers that will make your travel more memorable
+            </p>
+            <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Rest House
+                    </h5>
+                    <div class="offer-item">
+                        @if (ViewData["RestOffer"] == null)
+                        { <div class="icon">
+                            <i class="ion-social-euro"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (r.OfferPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(r.OfferPictureData)" alt="@r.OfferName" style="width:250px;height:150px;" />
+                                <h4>@r.OfferName by @r.VendorName</h4>
+
+
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = r.OfferId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@r.OfferName" style="width:250px;height:150px;" />
+                                <h4>@r.OfferName by @r.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = r.OfferId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["Rest"] == null)
+                    {
+
+                        @Html.ActionLink("See all Rest House Offers", "SearchOfferList", "Offer", new { CountryId = Model.CountryId, CityId = Model.CityId, VendorTypeId = Model.RestHouseVendorId, Arrival = Model.Arrival, Departure = Model.Departure }, null)
+                    }
+
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Hotels
+                    </h5>
+                    <div class="offer-item">
+
+
+                        @if (ViewData["HotelOffer"] == null)
+                        { <div class="icon">
+                            <i class="ion-ios-home"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (h.OfferPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(h.OfferPictureData)" alt="@h.OfferName" style="width:250px;height:150px;" />
+                                <h4>@h.OfferName by @h.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = h.OfferId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@h.OfferName" style="width:250px;height:150px;" />
+                                <h4>@h.OfferName by @h.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = h.OfferId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["Hot"] == null)
+                    {
+
+                        @Html.ActionLink("See All Hotel offers", "SearchOfferList", "Offer", new { CountryId = Model.CountryId, CityId = Model.CityId, VendorTypeId = Model.HotelVendorId, Arrival=Model.Arrival,Departure=Model.Departure}, null)
+                    }
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Transport
+                    </h5>
+                    <div class="offer-item">
+
+
+
+
+
+                        @if (ViewData["TransOffer"] == null)
+                        { <div class="icon">
+                            <i class="ion-android-bus"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (t.OfferPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(t.OfferPictureData)" alt="@t.OfferName" style="width:250px;height:200px;" />
+                                <h4>@t.OfferName by @t.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = t.OfferId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@t.OfferName" style="width:250px;height:150px;" />
+                                <h4>@t.OfferName by @t.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = t.OfferId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["Trans"] == null)
+                    {
+
+                        @Html.ActionLink("See All Transport offers", "SearchOfferList", "Offer", new { CountryId = Model.CountryId, CityId = Model.CityId, VendorTypeId = Model.TransportVendorId, Arrival = Model.Arrival, Departure = Model.Departure }, null)
+                    }
+
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Travel Agency
+                    </h5>
+
+
+
+
+
+                    @if (ViewData["TraAgeOffer"] == null)
+                    {   <div class="offer-item">
+
+                        <div class="icon">
+                            <i class="ion-ios-locked"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="offer-item">
+                            @if (ta.OfferPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(ta.OfferPictureData)" alt="@ta.OfferName" style="width:250px;height:150px;" />
+                                <h4>@ta.OfferName by @ta.VendorName  </h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = t.OfferId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@ta.OfferName" style="width:250px;height:150px;" />
+                                <h4>@ta.OfferName by @ta.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = t.OfferId }, null)
+                            }
+                        </div>
+                    }
+                    @if (TempData["Trav"] == null)
+                    {
+
+                        @Html.ActionLink("See All agency offers", "SearchOfferList", "Offer", new { CountryId = Model.CountryId, CityId = Model.CityId, VendorTypeId = Model.TravelVendorId, Arrival = Model.Arrival, Departure = Model.Departure }, null)
+                    }
+
+
+
+                    <!-- /.col-md-3 -->
+                </div>
+
+            </div>
+        </div> <!-- /.container -->
+    </section> <!-- /.offer -->
+    <!-- Top place to visit -->
+    <section class="visit section-wrapper">
+        <div class="container">
+            <h2 class="section-title">
+                Top place to visit
+            </h2>
+            <p class="section-subtitle">
+                Places where you'll find a knowledge
+            </p>
+
+
+            @if (Model.Places != null)
+            {
+                <div class="owl-carousel visit-carousel" id="">
+                    @foreach (var i in Model.Places)
+                    {
+                        var j = i as Travel.Models.ViewModel.PlaceIndexViewModel;
+                        if (j.PlacePictureData != null)
+                        {
+                            <div class="item">
+                                <img src="data:image;base64,@System.Convert.ToBase64String(j.PlacePictureData)" alt="@j.PlaceName" class="img-responsive visit-item">
+                            </div>
+                        }
+                        else
+                        {
+                            <img src="~/Content/Images/No_Image.png" alt="@j.PlaceName" class="img-responsive visit-item">
+                        }
+                        @Html.ActionLink("Check Detail", "SearchPlaceDetail", "Place", new { PlaceId = j.PlaceId}, null)
+                    }
+                </div>
+            }
+            else
+            {
+
+                <h4 style="text-align:center;">We found nothing</h4>
+
+
+            }
+            @if (TempData["Pla"] == null)
+            {
+                <br /><br />  @Html.ActionLink("Check More Places?", "SearchPlaceList", "Place", new { CountryId = Model.CountryId, CityId = Model.CityId }, null)
+            }
+
+        </div> <!-- /.container -->
+    </section> <!-- /.visit -->
+
+    <div class="offer-cta">
+        <div class="container">
+            <div class="offering">
+                <div class="percent">
+                    <span>Cheap</span>way
+                </div>
+                @if (TempData["hostAvai"] != null)
+                {
+                    <p class="alert alert-success" id="successMessage" style="height:40px;margin-bottom:40px;margin-top:10px;">@TempData["hostAvai"] </p>
+                }
+                <div class="FTour">
+                    for <strong>Your Tour</strong>
+                </div>
+                @Html.ActionLink("See Hosts?", "SearchHostList", "Host", new { CountryId = Model.CountryId, CityId = Model.CityId, Arrival = Model.Arrival, Departure = Model.Departure }, null)
+
+
+            </div> <!-- /.offering -->
+        </div> <!-- /.container -->
+    </div> <!-- /.offer-cta -->
+    <!---Vendors--->
+
+    <section class="offer section-wrapper">
+        <div class="container">
+            <h2 class="section-title">Regular</h2>
+            <p class="section-subtitle">
+                Regular Hotels, Motels and Transport
+            </p>
+            <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Rest House
+                    </h5>
+                    <div class="offer-item">
+                        @if (ViewData["RestVendor"] == null)
+                        { <div class="icon">
+                            <i class="ion-social-euro"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (g.VendorPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(g.VendorPictureData)" alt="@g.VendorName" style="width:250px;height:150px;" />
+                                <h4> @g.VendorName</h4>
+
+
+                                @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = g.VendorId}, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@g.VendorName" style="width:250px;height:150px;" />
+                                <h4> @g.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = g.VendorId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["RestVen"] == null)
+                    {
+
+                        @Html.ActionLink("See all Rest House", "SearchVendorList", "Vendor", new { VendorTypeId = Model.RestHouseVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+                    }
+
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Hotels
+                    </h5>
+                    <div class="offer-item">
+
+
+                        @if (ViewData["HotelVendor"] == null)
+                        { <div class="icon">
+                            <i class="ion-ios-home"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (o.VendorPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(o.VendorPictureData)" alt="@o.VendorName" style="width:250px;height:150px;" />
+                                <h4> @o.VendorName</h4>
+
+
+                                @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = o.VendorId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@o.VendorName" style="width:250px;height:150px;" />
+                                <h4> @o.VendorName</h4>
+                                @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = o.VendorId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["HotVen"] == null)
+                    {
+
+                        @Html.ActionLink("See all hotels", "SearchVendorList", "Vendor", new { VendorTypeId = Model.HotelVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+                    }
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Transport
+                    </h5>
+                    <div class="offer-item">
+
+
+
+
+
+                        @if (ViewData["TransVendor"] == null)
+                        { <div class="icon">
+                            <i class="ion-android-bus"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                        }
+                        else
+                        {
+                            if (z.VendorPictureData != null)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(z.VendorPictureData)" alt="@z.VendorName" style="width:250px;height:150px;" />
+                                <h4> @z.VendorName</h4>
+
+
+                                @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = z.VendorId }, null)
+                            }
+                            else
+                            {
+                                <img src="~/Content/Images/No_Image.png" alt="@z.VendorName" style="width:250px;height:150px;" />
+                                <h4> @z.VendorName</h4>
+                               @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = z.VendorId }, null)
+                            }
+
+                        }
+
+                    </div>
+                    @if (TempData["tranVen"] == null)
+                    {
+
+                        @Html.ActionLink("See all Transport services", "SearchVendorList", "Vendor", new { VendorTypeId = Model.TransportVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+                    }
+
+                </div> <!-- /.col-md-3 -->
+
+                <div class="col-sm-3 col-xs-6">
+                    <h5>
+                        Travel Agency
+                    </h5>
+
+
+
+
+
+                    @if (ViewData["TravVendor"] == null)
+                    {   <div class="offer-item">
+
+                        <div class="icon">
+                            <i class="ion-ios-locked"></i>
+                        </div>
+
+                        <p>
+                            No Data found
+                        </p>
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="offer-item">
+                            @if (k.VendorPictureData != null)
+                            {
+                            <img src="data:image;base64,@System.Convert.ToBase64String(k.VendorPictureData)" alt="@k.VendorName" style="width:250px;height:150px;" />
+                            <h4> @k.VendorName</h4>
+
+
+                            @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = k.VendorId}, null)
+                            }
+                            else
+                            {
+                            <img src="~/Content/Images/No_Image.png" alt="@k.VendorName" style="width:250px;height:150px;" />
+                            <h4> @k.VendorName</h4>
+                            @Html.ActionLink("Check Detail", "SeachVendorDetail", "Vendor", new { VendorId = k.VendorId }, null)
+                            }
+                        </div>
+                    }
+                    @if (TempData["travVen"] == null)
+                    {
+
+                        @Html.ActionLink("See all Travel Agencies", "SearchVendorList", "Vendor", new { VendorTypeId = Model.TravelVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+                    }
+
+
+
+                    <!-- /.col-md-3 -->
+                </div>
+
+            </div>
+        </div> <!-- /.container -->
+    </section> <!-- /.offer -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="additional-services section-wrapper">
+        <div class="container">
+            <h2 class="section-title">
+                Additional services
+            </h2>
+            <p class="section-subtitle">
+                Services which you might need
+            </p>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/add-srvc-1.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Photographer
+                            </h4>
+                            <p class="add-srvc">
+                                Who captures your happiness.
+                            </p>
+                            @if (TempData["png"] != null)
+                            {
+                                @Html.ActionLink("See all PhotoGrapher", "SearchVendorList", "Vendor", new { VendorTypeId = Model.PhotoVendorId ,CountryId = Model.CountryId, CityId = Model.CityId}, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any photographer</span>
+                            }
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/add-srvc-2.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Food Delivery
+                            </h4>
+                            <p class="add-srvc">
+                                Your tummy filler.
+                            </p>
+                            @if (TempData["foodDeli"] != null)
+                            {
+                                @Html.ActionLink("Food delivery shops?", "SearchVendorList", "Vendor", new { VendorTypeId = Model.FoodVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any food delivery shop.</span>
+                            }
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/add-srvc-3.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Guide
+                            </h4>
+                            <p class="add-srvc">
+                                the person who shows you path
+                            </p>
+                            @if (TempData["Guid"] != null)
+                            {
+                                @Html.ActionLink("Want a guide?", "SearchVendorList", "Vendor", new { VendorTypeId = Model.GuideVendorId, CountryId = Model.CountryId, CityId = Model.CityId}, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any guide</span>
+                            }
+
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/rsz_12download.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Laundry
+                            </h4>
+                            <p class="add-srvc">
+                                stay clean, stay healthy
+                            </p>
+                            @if (TempData["laun"] != null)
+                            {
+                                @Html.ActionLink("See Laundry shops", "SearchVendorList", "Vendor", new { VendorTypeId = Model.LaundVendorId, CountryId = Model.CountryId, CityId = Model.CityId}, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any laundry</span>
+                            }
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/rsz_index.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Hospital
+                            </h4>
+                            <p class="add-srvc">
+                                For any medication
+                            </p>
+                            @if (TempData["hos"] != null)
+                            {
+                                @Html.ActionLink("See the list?", "SearchPlaceListWithType", "Place", new { CountryId = Model.CountryId, CityId = Model.CityId, PlaceTypeId = Model.HospitalPlaceId }, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any hospital nearby</span>
+                            }
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="custom-table">
+                        <img src="~/Content/Images/rsz_1images.png" alt="" class="add-srvc-img">
+                        <div class="add-srvc-detail">
+                            <h4 class="add-srvc-heading">
+                                Market place
+                            </h4>
+                            <p class="add-srvc">
+                                increases your shopping experience.
+                            </p>
+                            @if (TempData["Market"] != null)
+                            {
+                                @Html.ActionLink("See the list?", "SearchPlaceListWithType", "Place", new { CountryId = Model.CountryId, CityId = Model.CityId, PlaceTypeId = Model.MarketPlaceId }, null)
+
+                            }
+                            else
+                            {
+                                <span class="highlight">Sorry not found any market area</span>
+                            }
+                        </div> <!-- /.add-srvc-detail -->
+                    </div> <!-- /.custom-table -->
+                </div> <!-- /.col-md-4 col-sm-6 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </section> <!-- /.Additional-services -->
+
+    <div class="section-wrapper sponsor">
+        <div class="container" style="height:250px;">
+            <h4>Restaurents</h4>
+
+            @if (Model.Rest != null)
+            {
+                <div class="owl-carousel sponsor-carousel">
+                    @foreach (var i in Model.Rest)
+                    {
+                        var j = i as Travel.Models.ViewModel.RestaurentVendorViewModel;
+                        if (j.VendorPictureData != null)
+                        {
+                            <div class="item">
+                                <a href="#">
+                                    <img src="data:image;base64,@System.Convert.ToBase64String(j.VendorPictureData)" alt="@j.VendorName" class="img-responsive visit-item" style="height:90px;width:150px;">
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item">
+                                <a href="#"><img src="~/Content/Images/No_Image.png" alt="@j.VendorName" class="img-responsive visit-item" style="height:90px;width:150px;"></a>
+
+                            </div>
+                        }
+                        @Html.ActionLink("Check Detail", "SearchVendorDetail", "Vendor", new { VendorId = j.VendorId }, null)
+                    }
+                </div>
+                    @Html.ActionLink("See all Restaurents", "SearchVendorList", "Vendor", new { VendorTypeId = Model.RestaurentVendorId, CountryId = Model.CountryId, CityId = Model.CityId }, null)
+            }
+            else
+            {
+
+                <br /><br /> <h4>We found nothing</h4>
+            }
+
+            <!-- /.owl-carousel -->
+
+        </div> <!-- /.container -->
+    </div> <!-- /.sponsor -->
+
+
+    <div class="subscribe section-wrapper">
+        <a class="brand-logo" href="index.html" title="HOME"><div style="white-space:nowrap;"><img src="~/Content/Images/android-icon-144x144.png" style="height:30px;width:50px;" /><span style="color:green;font-size:30px;">Travelous</span></div></a>
+        <p class="subscribe-now">
+            Subscribe to our Newsletter
+        </p>
+        <div class="container">
+            <div class="row" id="subscribe">
+                <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                    @using (Html.BeginForm("Subscriber", "Home", FormMethod.Post, new { @id = "SignInUserForm", @role = "form" }))
+                    {
+                        <div class="input-group">
+                            <input name="mail" type="email" class="form-control border-radius" placeholder="Email address">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default border-radius custom-sub-btn" type="submit">DONE</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    }
+                </div>
+
+                <h4>@ViewData["mail"]</h4>
+
+            </div>
+        </div>
+
+        <ul class="social-icon">
+            <li><a href="https://twitter.com/intent/tweet?url=https://ShepHerd.com" target="_blank" title="share on twitter"><i class="ion-social-twitter"></i></a></li>
+            <li><a href="https://facebook.com/sharer.php?u=https://ShepHerd.com" target="_blank" title="share on facebook"><i class="ion-social-facebook"></i></a></li>
+            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=https://ShepHerd.com" target="_blank"><i class="ion-social-linkedin-outline"></i></a></li>
+            <li><a href="https://plus.google.com/share?url=https://ShepHerd.com" target="_blank"><i class="ion-social-googleplus"></i></a></li>
+        </ul>
+    </div> <!-- /.subscribe -->
+</div>
+<script src="~/Scripts/jquery-1.11.2.min.js"></script>
+
+<script src="~/Scripts/moment.js"></script>
+@*<script src="~/Scripts/bootstrap.js"></script>*@
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/Own/DatePicker.js"></script>
+

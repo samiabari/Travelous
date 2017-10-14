@@ -1,0 +1,60 @@
+﻿
+<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+@{
+    ViewBag.Title = "Search Host List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Travel.Models.ViewModel.HostDetailSearchViewModel>
+<div class="container-fluid">
+    <div class="overlay">
+           
+         
+        <table class="table table-responsive table-hover table-bordered" style="margin-top:100px;margin-left:150px;background-color:#b5aa67;margin-right:40px;width:1400px;overflow:scroll;">
+            <thead style="background-color:#bab9b6;height:60px;">
+                <tr>
+                    <th style="text-align:center;">#</th>
+                    <th></th>
+                    <th style="text-align:center;">Host</th>
+                    <th style="text-align:center;">Phn No</th>
+                    <th style="text-align:center;">Start time</th>
+                    <th style="text-align:center;">End Time</th>
+                    <th style="text-align:center;">Detail</th>
+
+                </tr>
+            </thead>
+
+            @{int t = 1;}
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <th scope="row">@t</th>
+                        @if (i.HostPictureData != null)
+                        {
+                            <td><img src="data:image;base64,@System.Convert.ToBase64String(i.HostPictureData)" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+                        else
+                        {
+                            <td><img src="~/Content/Images/No_Image.png" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+
+                        <td>@i.HostName</td>
+                        <td>@i.HostPhnNo</td>
+                        <td>@i.HostingStartTime</td>
+                        <td>@i.HostingEndTime</td>
+                        <td>@i.HostShortDetail </td>
+                        @if (i.HostStatus == true)
+                        {<td>@Html.ActionLink("Turn of offer", "DeactivateHost", "Host", new { HostId = i.HostId }, null)</td>}
+                    </tr>
+
+
+                    t++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

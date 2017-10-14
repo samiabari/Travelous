@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34819b95917f4ffca18b4adbf6ba2c1b" Name="Diagram1">
+        <EntityTypeShape EntityType="TourDBModel.AlbumType" Width="1.5" PointX="10.5" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.CheckIn" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.City" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Country" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Host" Width="1.5" PointX="8.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.HostAlbum" Width="1.5" PointX="13.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.HostPicture" Width="1.5" PointX="18.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.HostType" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Offer" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.OfferAlbum" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.OfferPicture" Width="1.5" PointX="15.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.OfferType" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Place" Width="1.5" PointX="5.25" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.PlaceAlbum" Width="1.5" PointX="7.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.PlacePicture" Width="1.5" PointX="12.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.PlaceType" Width="1.5" PointX="3" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Subscriber" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Tourist" Width="1.5" PointX="18" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.TouristAlbum" Width="1.5" PointX="10.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.TouristPicture" Width="1.5" PointX="15.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.Vendor" Width="1.5" PointX="21" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.VendorAlbum" Width="1.5" PointX="13.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.VendorPicture" Width="1.5" PointX="15.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.VendorType" Width="1.5" PointX="18.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourDBModel.WishList" Width="1.5" PointX="23.25" PointY="23.5" IsExpanded="true" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlaceAlbum_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlacePicture_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristAlbum_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristPicture_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorAlbum_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_AlbumType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_CheckIn_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_CheckIn_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_CheckIn_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_CheckIn_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_CheckIn_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_City_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Host_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Offer_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Place_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlaceAlbum_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlacePicture_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Tourist_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristAlbum_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Vendor_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorAlbum_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_WishList_City" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Host_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Offer_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Place_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlaceAlbum_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlacePicture_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Tourist_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristAlbum_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Vendor_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorAlbum_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_WishList_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Host_HostPicture" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Host_HostType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Host_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_Host" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_Host" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostAlbum_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_HostAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_HostPicture_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Offer_OfferPicture" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Offer_OfferType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_Offer" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_Offer" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferAlbum_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_OfferAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_OfferPicture_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Place_PlacePicture" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Place_PlaceType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlaceAlbum_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlacePicture_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristAlbum_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorAlbum_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_WishList_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_PlacePicture_PlaceAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Tourist_TouristPicture" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristAlbum_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristPicture_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_WishList_Tourist" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_TouristPicture_TouristAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Vendor_VendorPicture" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_Vendor_VendorType" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorAlbum_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="TourDBModel.FK_VendorPicture_VendorAlbum" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

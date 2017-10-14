@@ -1,0 +1,63 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+@{
+    ViewBag.Title = "Sign In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Travel.Models.ViewModel.AdminSignInViewModel
+@{
+    ViewBag.Title = "Sign In";
+}
+
+@{ Html.EnableClientValidation(true); }
+
+<div class="overlay">
+
+
+    @using (Html.BeginForm("SignIn", "Admin", FormMethod.Post, new { @id = "AdminSignInForm", @class = "form-horizontal", @role = "form",@style="margin-top:200px;" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AdminName, new { @class = "no-space-break col-md-4 control-label" })
+            <div class="col-md-8">
+                <div class="input-group">
+                    @Html.TextBoxFor(m => m.AdminName, new { @class = "form-control border-radius border-right" })
+                    @Html.ValidationMessageFor(m => m.AdminName, "", new { @class = "text-danger  " })
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AdminPassword, new { @class = "no-space-break col-md-4 control-label" })
+            <div class="col-md-8">
+                <div class="input-group">
+                    @Html.PasswordFor(m => m.AdminPassword, new { @class = "form-control border-radius border-right" })
+                    @Html.ValidationMessageFor(m => m.AdminPassword, "", new { @class = "text-danger " })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <div class="input-group">
+                    <input type="submit" id="SignInButton" class="btn btn-default border-radius" value="Sign In" />
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <p style="text-align:center;color:red;">@ViewData["message"]</p>
+
+
+</div>

@@ -1,0 +1,135 @@
+﻿
+
+
+
+
+<head>
+
+   
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/Own/Try2.css" rel="stylesheet" />
+
+</head>
+
+
+@model Travel.Models.ViewModel.AddPlaceViewModel
+
+@{
+    ViewBag.Title = "Add a new Place";
+    Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+}
+@{ Html.EnableClientValidation(true); }
+<div class="container-fluid">
+    <div class="overlay">
+
+        <h2>New Place</h2>
+        @if (TempData["Success"] != null)
+        {
+            <p class="alert alert-success" id="successMessage" style="height:40px;margin:20px;">@TempData["Success"]</p>
+        }
+
+
+        @using (Html.BeginForm("AddPlace", "Place", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "UpdateForm", @class = "form-horizontal", @role = "form", @style = "margin-top:30px; width:1100px;" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+
+
+            <div class="form-group">
+                <div clas="row input-group">
+                    @Html.LabelFor(m => m.PlacePictureData, new { @class = "no-space-break col-md-4 control-label" })
+
+                    <input for="PlacePictureData" name="AddPicture" id="AddPicture" type="file" accept="image/*" />
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlaceName, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.PlaceName, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.PlaceName, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlaceTypeId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.PlaceTypeId, Model.PlaceTypeList, "--Select--", new { @id = "ddlVendorType", @name = "VendorTypeId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.PlaceTypeId, "", new { @class = "text-danger " })
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlaceAddress, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextBoxFor(m => m.PlaceAddress, new { @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.PlaceAddress, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CountryId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(x => x.CountryId, Model.CountryList, "--Select--", new { @id = "ddlCountry", @name = "CountryId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CityId, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group" id="City">
+                        @Html.DropDownListFor(x => x.CityId, new List<SelectListItem>(), "--Select--", new { @id = "ddlCity", @name = "CityId", @class = "form-control border-radius border-right" })
+                        @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PlaceDetail, new { @class = "no-space-break col-md-4 control-label" })
+                <div class="col-md-8">
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.PlaceDetail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PlaceDetail, "", new { @class = "text-danger " })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <div class="input-group">
+                        <input type="submit" id="btnCreate" onclick="Validate(this, event);" class="btn btn-default border-radius" value="Update" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+
+
+    
+
+    </div>
+    </div>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/Own/Alert.js"></script>
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/Own/Editor.js"></script>

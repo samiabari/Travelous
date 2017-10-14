@@ -1,0 +1,70 @@
+﻿<head>
+    <link href="~/Content/Own/Try.css" rel="stylesheet" />
+</head>
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Travel.Models.ViewModel.OfferDetailViewModel>
+<div class="container-fluid">
+    <div class="overlay">
+@{ 
+    Session["SearchOfferList"] = "Yes";
+
+}
+       @if((int)Session["SearchCountryId"]!=0)
+        {
+        int SearchCountryId = (int)Session["SearchCountryId"];
+        int SearchCityId = (int)Session["SearchCityId"];
+        string Arrival = (string)Session["Arrival"];
+        string Departure = (string)Session["Departure"];
+        <div style="Background-color:white;margin-top:100px;">
+            @Html.ActionLink("Go Back???", "Search", "Home", new { CountryId = SearchCountryId, CityId = SearchCityId, Arrival = Arrival, Departure = Departure }, null)
+        </div>
+        }
+        <table class="table table-responsive table-hover table-bordered" style="margin-top:100px;margin-left:150px;background-color:#b5aa67;margin-right:40px;width:1400px;overflow:scroll;">
+            <thead style="background-color:#bab9b6;height:60px;">
+                <tr>
+                    <th style="text-align:center;">#</th>
+                    <th></th>
+                    <th style="text-align:center;"> Offer by</th>
+                   
+                    <th style="text-align:center;">Phn No</th>
+                    <th style="text-align:center;">Likes</th>
+                    <th style="text-align:center;">Detail</th>
+
+                </tr>
+            </thead>
+
+            @{int t = 1;}
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <th scope="row">@t</th>
+                        @if (i.OfferPictureData != null)
+                        {
+                            <td><img src="data:image;base64,@System.Convert.ToBase64String(i.OfferPictureData)" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+                        else
+                        {
+                            <td><img src="~/Content/Images/No_Image.png" style="max-width:100px;max-height:100px;" />  </td>
+                        }
+
+                        <td>@i.OfferName by @i.VendorName</td>
+                        <td>@i.OfferPhnNo</td>
+                     
+                        <td>@i.OfferShortDetail <br />@Html.ActionLink("Check Detail", "SearchOfferOfferDetail", "Offer", new { OfferId = i.OfferId}, null)</td>
+
+                    </tr>
+
+
+                    t++;
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
